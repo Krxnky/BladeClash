@@ -3,6 +3,8 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/BladeClash.iml" filepath="$PROJECT_DIR$/BladeClash.iml" />
+      <module fileurl="file://$PROJECT_DIR$/BladeClashClient/BladeClashClient.iml" filepath="$PROJECT_DIR$/BladeClashClient/BladeClashClient.iml" />
+      <module fileurl="file://$PROJECT_DIR$/BladeClashServer/BladeClashServer.iml" filepath="$PROJECT_DIR$/BladeClashServer/BladeClashServer.iml" />
     </modules>
   </component>
 </project>
