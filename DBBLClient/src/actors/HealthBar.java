@@ -22,6 +22,7 @@ public class HealthBar extends Actor {
         this.health = health;
     }
 
+    @Override
     public void act()
     {
         setImage(new GreenfootImage(healthBarWidth+2, healthBarHeight+2));

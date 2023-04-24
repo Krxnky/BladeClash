@@ -1,12 +1,17 @@
 package worlds;
 
+import actors.Goku;
 import actors.HealthBar;
+import actors.Vegeta;
 import greenfoot.GreenfootImage;
 import greenfoot.World;
 
 public class MainGame extends World  {
     HealthBar playerHealthBar;
     HealthBar enemyHealthBar;
+
+    Goku playerCharacter;
+    Vegeta enemyCharacter;
 
     public MainGame()
     {
@@ -27,6 +32,13 @@ public class MainGame extends World  {
 
         addObject(playerHealthBar, playerHealthBar.getImage().getWidth() + 150, 30);
         addObject(enemyHealthBar, getWidth() - enemyHealthBar.getImage().getWidth() - 150, 30);
+
+        // Create characters
+        playerCharacter = new Goku();
+        enemyCharacter = new Vegeta();
+
+        addObject(playerCharacter, 20, 50);
+        addObject(enemyCharacter, getWidth() - enemyCharacter.getImage().getWidth(), (getHeight()/2) - (enemyCharacter.getImage().getHeight()/2));
 
 
     }
