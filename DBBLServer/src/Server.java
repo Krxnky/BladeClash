@@ -2,7 +2,7 @@ public class Server {
     public Server(){
 
     }
-
+// hi
 //    public static String attackCompare(Player.ATTACK_TYPE attackType){
 //
 //        return "";
