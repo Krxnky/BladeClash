@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/DBBL.iml" filepath="$PROJECT_DIR$/DBBL.iml" />
       <module fileurl="file://$PROJECT_DIR$/DBBLClient/DBBLClient.iml" filepath="$PROJECT_DIR$/DBBLClient/DBBLClient.iml" />
+      <module fileurl="file://$PROJECT_DIR$/DBBLProtocol/DBBLProtocol.iml" filepath="$PROJECT_DIR$/DBBLProtocol/DBBLProtocol.iml" />
       <module fileurl="file://$PROJECT_DIR$/DBBLServer/DBBLServer.iml" filepath="$PROJECT_DIR$/DBBLServer/DBBLServer.iml" />
     </modules>
   </component>

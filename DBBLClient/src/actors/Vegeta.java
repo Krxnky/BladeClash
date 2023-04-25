@@ -7,7 +7,7 @@ public class Vegeta extends Actor {
 
     public Vegeta()
     {
-        GreenfootImage cImg = new GreenfootImage("gokusprite.png");
+        GreenfootImage cImg = new GreenfootImage("vegetasprite.png");
         setImage(cImg);
     }
 

@@ -2,6 +2,7 @@ package worlds;
 
 import actors.Goku;
 import actors.HealthBar;
+import actors.NetworkHandler;
 import actors.Vegeta;
 import greenfoot.GreenfootImage;
 import greenfoot.World;
@@ -13,6 +14,8 @@ public class MainGame extends World  {
     Goku playerCharacter;
     Vegeta enemyCharacter;
 
+    NetworkHandler networkHandler;
+
     public MainGame()
     {
         super(1000, 600, 1, false);
@@ -22,6 +25,11 @@ public class MainGame extends World  {
         setBackground(bg);
 
         buildUI();
+    }
+
+    public void buildNetwork()
+    {
+        networkHandler = new NetworkHandler();
     }
 
     public void buildUI()
@@ -37,9 +45,8 @@ public class MainGame extends World  {
         playerCharacter = new Goku();
         enemyCharacter = new Vegeta();
 
-        addObject(playerCharacter, 20, 50);
-        addObject(enemyCharacter, getWidth() - enemyCharacter.getImage().getWidth(), (getHeight()/2) - (enemyCharacter.getImage().getHeight()/2));
-
+        addObject(playerCharacter, 100, (getHeight() - playerCharacter.getImage().getHeight()));
+        addObject(enemyCharacter, getWidth() - enemyCharacter.getImage().getWidth(), (getHeight() - enemyCharacter.getImage().getHeight()));
 
     }
 }
