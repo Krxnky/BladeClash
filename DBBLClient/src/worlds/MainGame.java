@@ -6,6 +6,13 @@ import actors.NetworkHandler;
 import actors.Vegeta;
 import greenfoot.GreenfootImage;
 import greenfoot.World;
+import requests.PlayerInfo;
+import responses.GameInfo;
+
+import java.net.Inet4Address;
+import java.net.InetAddress;
+import java.net.UnknownHostException;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class MainGame extends World  {
     HealthBar playerHealthBar;
@@ -15,6 +22,8 @@ public class MainGame extends World  {
     Vegeta enemyCharacter;
 
     NetworkHandler networkHandler;
+    PlayerInfo localPlayerInfo;
+    GameInfo gameInfo;
 
     public MainGame()
     {
@@ -25,13 +34,23 @@ public class MainGame extends World  {
         setBackground(bg);
 
         buildUI();
-        buildNetwork();
+        connectToServer();
     }
 
-    public void buildNetwork()
+    public void connectToServer()
     {
         networkHandler = new NetworkHandler(this);
         networkHandler.connect();
+    }
+
+    public void startGame()
+    {
+
+    }
+
+    public void updateGameInfo(GameInfo gameInfo)
+    {
+
     }
 
     public void buildUI()

@@ -1,17 +1,27 @@
 package actors;
 
+import enums.GameState;
 import greenfoot.Actor;
+import responses.GameInfo;
 import worlds.MainGame;
 
 import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.net.Socket;
 
 public class NetworkHandler extends Actor {
     private String serverIp = "localhost";
     private int serverPort = 50000;
 
-    private Socket server;
     private MainGame mainGame;
+
+    private Socket socket;
+    private ObjectOutputStream objectOutputStream;
+    private ObjectInputStream objectInputStream;
+
+    private Thread listenThread;
+    private Thread talkThread;
 
     public NetworkHandler(MainGame mainGame)
     {
@@ -21,30 +31,60 @@ public class NetworkHandler extends Actor {
     public void connect()
     {
         try {
-            server = new Socket(serverIp, serverPort);
+            socket = new Socket(serverIp, serverPort);
             System.out.println("Connected to server...");
+
+            objectOutputStream = new ObjectOutputStream(socket.getOutputStream());
+            objectInputStream = new ObjectInputStream(socket.getInputStream());
+
+            listenThread = new Thread(new ListenThread());
+            talkThread = new Thread(new TalkThread());
+
+            listenThread.start();
+            talkThread.start();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void send(Object obj)
+    {
+        try {
+            objectOutputStream.writeObject(obj);
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
     public class TalkThread implements Runnable {
-        public TalkThread()
-        {
-
-        }
 
         @Override
         public void run() {
+            try {
+                while(!socket.isClosed())
+                {
+                    Object obj = objectInputStream.readObject();
+                    if(obj instanceof GameInfo)
+                    {
+                        GameInfo gameInfo = (GameInfo) obj;
+                        mainGame.updateGameInfo(gameInfo);
 
+                        if(gameInfo.getState() == GameState.STARTING)
+                        {
+                            mainGame.startGame();
+                        }
+                    }
+
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            }
         }
     }
 
     public class ListenThread implements Runnable {
-        public ListenThread()
-        {
-
-        }
 
         @Override
         public void run() {
