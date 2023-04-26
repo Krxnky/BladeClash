@@ -25,11 +25,13 @@ public class MainGame extends World  {
         setBackground(bg);
 
         buildUI();
+        buildNetwork();
     }
 
     public void buildNetwork()
     {
-        networkHandler = new NetworkHandler();
+        networkHandler = new NetworkHandler(this);
+        networkHandler.connect();
     }
 
     public void buildUI()
