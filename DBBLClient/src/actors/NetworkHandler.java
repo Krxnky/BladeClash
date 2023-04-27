@@ -10,7 +10,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
 
-public class NetworkHandler extends Actor {
+public class NetworkHandler implements Runnable {
     private String serverIp = "localhost";
     private int serverPort = 50000;
 
@@ -28,7 +28,7 @@ public class NetworkHandler extends Actor {
         this.mainGame = mainGame;
     }
 
-    public void connect()
+    public void run()
     {
         try {
             socket = new Socket(serverIp, serverPort);
@@ -64,6 +64,7 @@ public class NetworkHandler extends Actor {
                 while(!socket.isClosed())
                 {
                     Object obj = objectInputStream.readObject();
+                    System.out.println("GOT MESSAGE FROM SERVER" + obj.toString());
                     if(obj instanceof GameInfo)
                     {
                         GameInfo gameInfo = (GameInfo) obj;

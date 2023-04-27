@@ -9,11 +9,6 @@ import greenfoot.World;
 import requests.PlayerInfo;
 import responses.GameInfo;
 
-import java.net.Inet4Address;
-import java.net.InetAddress;
-import java.net.UnknownHostException;
-import java.util.concurrent.ThreadLocalRandom;
-
 public class MainGame extends World  {
     HealthBar playerHealthBar;
     HealthBar enemyHealthBar;
@@ -40,7 +35,7 @@ public class MainGame extends World  {
     public void connectToServer()
     {
         networkHandler = new NetworkHandler(this);
-        networkHandler.connect();
+        new Thread(networkHandler).start();
     }
 
     public void startGame()
@@ -50,7 +45,7 @@ public class MainGame extends World  {
 
     public void updateGameInfo(GameInfo gameInfo)
     {
-
+        this.gameInfo = gameInfo;
     }
 
     public void buildUI()
