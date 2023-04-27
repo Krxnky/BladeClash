@@ -15,6 +15,8 @@ public class Server {
     public static void main(String[] args) throws Exception{
         
         Thread acceptThread = new Thread(new Acceptor());
+        acceptThread.start();
+        System.out.println("accept thread started");
         acceptThread.join();
         System.out.println();
         GameInfo game = new GameInfo(1, new PlayerInfo[]{goku, vegeta}, GameState.STARTING);
