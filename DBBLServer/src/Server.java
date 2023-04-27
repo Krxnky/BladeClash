@@ -2,6 +2,7 @@ import enums.GameState;
 import requests.PlayerInfo;
 import responses.GameInfo;
 
+import java.io.ObjectOutputStream;
 import java.io.OutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
@@ -12,18 +13,26 @@ public class Server {
     private static Socket vSock;
     private static PlayerInfo goku;
     private static PlayerInfo vegeta;
+    private static ObjectOutputStream[] objectOutputStreams;
     public static void main(String[] args) throws Exception{
         
         Thread acceptThread = new Thread(new Acceptor());
         acceptThread.start();
         System.out.println("accept thread started");
         acceptThread.join();
-        System.out.println();
+        System.out.println("Starting Game...");
+        Thread.sleep(1000);
         GameInfo game = new GameInfo(1, new PlayerInfo[]{goku, vegeta}, GameState.STARTING);
-//        OutputStream[] os = serverSocket.getout
+        System.out.println("Game started");
+        OutputStream[] os = {gSock.getOutputStream(), vSock.getOutputStream()};
+        objectOutputStreams = new ObjectOutputStream[]{new ObjectOutputStream(os[0]), new ObjectOutputStream(os[1])};
+        objectWriter(game);
         while(true){}
     }
-
+    public static void objectWriter(Object object) throws Exception{
+        objectOutputStreams[0].writeObject(object);
+        objectOutputStreams[1].writeObject(object);
+    }
     private static class Acceptor implements Runnable{
 
         public Acceptor() throws Exception{

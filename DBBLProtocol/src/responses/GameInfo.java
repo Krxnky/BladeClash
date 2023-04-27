@@ -15,6 +15,7 @@ public class GameInfo implements Serializable {
         this.GameId = GameId;
         this.Players = Players;
         this.State = State;
+
     }
 
     public int getGameId() {
