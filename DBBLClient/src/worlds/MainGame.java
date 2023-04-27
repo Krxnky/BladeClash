@@ -12,6 +12,7 @@ public class MainGame extends World  {
     HealthBar enemyHealthBar;
 
     Button attackBtn;
+    AttackSlider attackSlider;
 
     Goku playerCharacter;
     Vegeta enemyCharacter;
@@ -47,6 +48,9 @@ public class MainGame extends World  {
         });
 
         addObject(attackBtn, 200, getHeight() - attackBtn.getImage().getHeight());
+
+        attackSlider = new AttackSlider();
+        addObject(attackSlider, 400, 100);
     }
 
     public void updateGameInfo(GameInfo gameInfo)
