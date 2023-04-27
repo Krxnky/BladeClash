@@ -41,6 +41,11 @@ public class MainGame extends World  {
 
     public void startGame()
     {
+        System.out.println("GAME STARTED");
+        attackBtn = new Button("ATTACKBTN.png", () -> {
+
+        });
+
         addObject(attackBtn, 200, getHeight() - attackBtn.getImage().getHeight());
     }
 
@@ -65,9 +70,5 @@ public class MainGame extends World  {
         addObject(playerCharacter, 100, (getHeight() - playerCharacter.getImage().getHeight()));
         addObject(enemyCharacter, getWidth() - enemyCharacter.getImage().getWidth(), (getHeight() - enemyCharacter.getImage().getHeight()));
 
-        //Create attack button
-        attackBtn = new Button("ATTACKBTN.png", () -> {
-            System.out.println("ATTACK BUTTON PRESSED");
-        });
     }
 }
