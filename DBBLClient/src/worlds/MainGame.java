@@ -1,21 +1,22 @@
 package worlds;
 
-import actors.Goku;
-import actors.HealthBar;
-import actors.NetworkHandler;
-import actors.Vegeta;
+import actors.*;
 import greenfoot.GreenfootImage;
 import greenfoot.World;
 import requests.PlayerInfo;
 import responses.GameInfo;
 
 public class MainGame extends World  {
+    // UI
     HealthBar playerHealthBar;
     HealthBar enemyHealthBar;
+
+    Button attackBtn;
 
     Goku playerCharacter;
     Vegeta enemyCharacter;
 
+    // NETWORK
     NetworkHandler networkHandler;
     PlayerInfo localPlayerInfo;
     GameInfo gameInfo;
@@ -40,7 +41,7 @@ public class MainGame extends World  {
 
     public void startGame()
     {
-
+        addObject(attackBtn, 200, getHeight() - attackBtn.getImage().getHeight());
     }
 
     public void updateGameInfo(GameInfo gameInfo)
@@ -64,5 +65,9 @@ public class MainGame extends World  {
         addObject(playerCharacter, 100, (getHeight() - playerCharacter.getImage().getHeight()));
         addObject(enemyCharacter, getWidth() - enemyCharacter.getImage().getWidth(), (getHeight() - enemyCharacter.getImage().getHeight()));
 
+        //Create attack button
+        attackBtn = new Button("ATTACKBTN.png", () -> {
+            System.out.println("ATTACK BUTTON PRESSED");
+        });
     }
 }
