@@ -5,11 +5,17 @@ import java.io.Serializable;
 public class PlayerInfo implements Serializable {
     private final int playerId;
     private final String ip;
+    private final int health;
 
-    public PlayerInfo(int playerId, String ip)
+    public PlayerInfo(int playerId, String ip, int health)
     {
         this.playerId = playerId;
         this.ip = ip;
+        this.health = health;
+    }
+
+    public int getHealth() {
+        return health;
     }
 
     public int getPlayerId() {

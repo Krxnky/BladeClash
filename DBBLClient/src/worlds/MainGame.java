@@ -13,7 +13,7 @@ public class MainGame extends World  {
     HealthBar enemyHealthBar;
 
     Button attackBtn;
-    AttackSlider attackSlider;
+    AttackBar attackBar;
 
     Goku playerCharacter;
     Vegeta enemyCharacter;
@@ -32,7 +32,7 @@ public class MainGame extends World  {
         setBackground(bg);
 
         buildUI();
-        connectToServer();
+        //connectToServer();
     }
 
     public void connectToServer()
@@ -49,9 +49,9 @@ public class MainGame extends World  {
 
     public void waitingForAttack(int attackBarSpeed)
     {
-
-        attackSlider = new AttackSlider();
-        addObject(attackSlider, 400, 100);
+        System.out.println("WAITING FOR ATTACK STARTED SPEED: " + attackBarSpeed);
+        attackBar = new AttackBar(2);
+        addObject(attackBar, 400, getHeight() - attackBar.getImage().getHeight());
     }
 
     public void updateGameInfo(GameInfo gameInfo)
@@ -61,6 +61,10 @@ public class MainGame extends World  {
 
     public void buildUI()
     {
+        // UI TESTING
+        attackBar = new AttackBar(5);
+        addObject(attackBar, (getBackground().getWidth()/2) - (attackBar.getImage().getWidth()/2), getHeight() - attackBar.getImage().getHeight());
+
         // Create Healthbar UI actors
         playerHealthBar = new HealthBar(100);
         enemyHealthBar = new HealthBar(100);
