@@ -1,6 +1,7 @@
 package worlds;
 
 import actors.*;
+import classes.NetworkHandler;
 import greenfoot.GreenfootImage;
 import greenfoot.World;
 import requests.PlayerInfo;
@@ -43,11 +44,11 @@ public class MainGame extends World  {
     public void startGame()
     {
         System.out.println("GAME STARTED");
-        attackBtn = new Button("ATTACKBTN.png", () -> {
 
-        });
+    }
 
-        addObject(attackBtn, 200, getHeight() - attackBtn.getImage().getHeight());
+    public void waitingForAttack(int attackBarSpeed)
+    {
 
         attackSlider = new AttackSlider();
         addObject(attackSlider, 400, 100);

@@ -1,8 +1,9 @@
-package actors;
+package classes;
 
 import enums.GameState;
 import greenfoot.Actor;
 import responses.GameInfo;
+import responses.WaitingForAttack;
 import worlds.MainGame;
 
 import java.io.IOException;
@@ -74,6 +75,10 @@ public class NetworkHandler implements Runnable {
                         {
                             mainGame.startGame();
                         }
+                    }
+                    else if(obj instanceof WaitingForAttack)
+                    {
+
                     }
 
                 }
