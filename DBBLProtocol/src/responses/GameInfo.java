@@ -32,7 +32,4 @@ public class GameInfo implements Serializable {
         return State;
     }
 
-    public void nextRound(){
-        round++;
-    }
 }
