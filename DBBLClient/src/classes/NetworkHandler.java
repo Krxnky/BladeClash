@@ -57,7 +57,7 @@ public class NetworkHandler implements Runnable {
         }
     }
 
-    public class TalkThread implements Runnable {
+    public class ListenThread implements Runnable {
 
         @Override
         public void run() {
@@ -78,7 +78,8 @@ public class NetworkHandler implements Runnable {
                     }
                     else if(obj instanceof WaitingForAttack)
                     {
-
+                        WaitingForAttack waitingForAttack = (WaitingForAttack) obj;
+                        mainGame.waitingForAttack(waitingForAttack.getAttackBarSpeed());
                     }
 
                 }
@@ -90,11 +91,13 @@ public class NetworkHandler implements Runnable {
         }
     }
 
-    public class ListenThread implements Runnable {
+    public class TalkThread implements Runnable {
 
         @Override
         public void run() {
 
         }
+
+        public void sendMessage()
     }
 }

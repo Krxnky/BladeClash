@@ -2,8 +2,10 @@ package worlds;
 
 import actors.*;
 import classes.NetworkHandler;
+import enums.AttackType;
 import greenfoot.GreenfootImage;
 import greenfoot.World;
+import requests.AttackRequest;
 import requests.PlayerInfo;
 import responses.GameInfo;
 
@@ -50,8 +52,10 @@ public class MainGame extends World  {
     public void waitingForAttack(int attackBarSpeed)
     {
         System.out.println("WAITING FOR ATTACK STARTED SPEED: " + attackBarSpeed);
-        attackBar = new AttackBar(2);
-        addObject(attackBar, 400, getHeight() - attackBar.getImage().getHeight());
+        attackBar = new AttackBar(attackBarSpeed, (attackValue) -> {
+            networkHandler.send(new AttackRequest(attackValue, AttackType.BASIC));
+        });
+        addObject(attackBar, (getBackground().getWidth()/2) - (attackBar.getImage().getWidth()/2), getHeight() - attackBar.getImage().getHeight());
     }
 
     public void updateGameInfo(GameInfo gameInfo)
@@ -62,8 +66,7 @@ public class MainGame extends World  {
     public void buildUI()
     {
         // UI TESTING
-        attackBar = new AttackBar(5);
-        addObject(attackBar, (getBackground().getWidth()/2) - (attackBar.getImage().getWidth()/2), getHeight() - attackBar.getImage().getHeight());
+
 
         // Create Healthbar UI actors
         playerHealthBar = new HealthBar(100);

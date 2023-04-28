@@ -2,7 +2,10 @@ package actors;
 
 import greenfoot.Actor;
 import greenfoot.Color;
+import greenfoot.Greenfoot;
 import greenfoot.GreenfootImage;
+
+import java.util.function.Consumer;
 
 public class AttackBar extends Actor {
     private int barWidth = 75;
@@ -10,10 +13,12 @@ public class AttackBar extends Actor {
 
     private int attackValue = 0;
     private int barSpeed;
+    private Consumer<Integer> onClick;
 
-    public AttackBar(int barSpeed)
+    public AttackBar(int barSpeed, Consumer<Integer> onClick)
     {
         this.barSpeed = barSpeed;
+        this.onClick = onClick;
 
         setImage(new GreenfootImage(barWidth+2, barHeight+2));
         getImage().setColor(Color.BLACK);
@@ -44,6 +49,11 @@ public class AttackBar extends Actor {
 
     public void act()
     {
+        if(Greenfoot.mouseClicked(this))
+        {
+            onClick.accept(attackValue/2);
+            getWorld().removeObject(this);
+        };
         for(int i=0; i<barSpeed; i++)
         {
             updateBar();
