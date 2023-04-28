@@ -38,8 +38,8 @@ public class Server {
         WaitingForAttack waitingForAttack = new WaitingForAttack(50);
         objectWriter(waitingForAttack);
 
-        objectWriter(goku);
-        objectWriter(vegeta);
+        objectOutputStreams[0].writeObject(goku);
+        objectOutputStreams[1].writeObject(vegeta);
         objectWriter(new String("Waiting for attack"));
         boolean waiting = true;
         while(waiting){
@@ -71,10 +71,10 @@ public class Server {
         public void run(){
             try{
                 gSock = serverSocket.accept();
-                goku = new PlayerInfo(1, gSock.getInetAddress().toString());
+                goku = new PlayerInfo(1, gSock.getInetAddress().toString(),1000);
                 System.out.println("Goku Joined!!");
                 vSock = serverSocket.accept();
-                vegeta = new PlayerInfo(2, vSock.getInetAddress().toString());
+                vegeta = new PlayerInfo(2, vSock.getInetAddress().toString(),1000);
                 System.out.println("Vegeta Joined!!");
             } catch (Exception e){
                 e.printStackTrace();
