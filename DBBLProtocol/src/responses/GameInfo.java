@@ -9,12 +9,15 @@ public class GameInfo implements Serializable {
     private final int GameId;
     private final PlayerInfo[] Players;
     private final GameState State;
+    private int round;
+    private int attackSpeed;
 
     public GameInfo(int GameId, PlayerInfo[] Players, GameState State)
     {
         this.GameId = GameId;
         this.Players = Players;
         this.State = State;
+        round = 1;
     }
 
     public int getGameId() {
@@ -27,5 +30,9 @@ public class GameInfo implements Serializable {
 
     public GameState getState() {
         return State;
+    }
+
+    public void nextRound(){
+        round++;
     }
 }

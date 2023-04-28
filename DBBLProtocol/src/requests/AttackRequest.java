@@ -16,6 +16,7 @@ public class AttackRequest implements Serializable {
 
     public int getAttackValue() {
         return AttackValue;
+
     }
 
     public AttackType getAttack() {
