@@ -91,6 +91,7 @@ public class Server {
         public void run() {
             try{
                 attacks = readAttack();
+                PlayerInfo winner = attacks[0].getAttackValue() > attacks[1].getAttackValue() ? goku: attacks[0].getAttackValue() < attacks[1].getAttackValue() ? vegeta: null;
             }
             catch (Exception e){
                 e.printStackTrace();
