@@ -4,6 +4,7 @@ import enums.GameState;
 import greenfoot.Actor;
 import requests.PlayerInfo;
 import responses.GameInfo;
+import responses.RoundResult;
 import responses.WaitingForAttack;
 import worlds.MainGame;
 
@@ -86,6 +87,11 @@ public class NetworkHandler implements Runnable {
                     {
                         WaitingForAttack waitingForAttack = (WaitingForAttack) obj;
                         mainGame.waitingForAttack(waitingForAttack.getAttackBarSpeed());
+                    }
+                    else if(obj instanceof RoundResult)
+                    {
+                        RoundResult roundResult = (RoundResult) obj;
+                        mainGame.setGameInfo(roundResult.getUpdatedGameInfo());
                     }
 
                 }
