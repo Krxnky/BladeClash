@@ -64,6 +64,11 @@ public class MainGame extends World  {
         this.gameInfo = gameInfo;
     }
 
+    private void updateUI()
+    {
+
+    }
+
     public void setLocalPlayerInfo(PlayerInfo localPlayerInfo) {
         this.localPlayerInfo = localPlayerInfo;
     }
