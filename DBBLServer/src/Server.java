@@ -34,12 +34,13 @@ public class Server {
         objectOutputStreams = new ObjectOutputStream[]{new ObjectOutputStream(os[0]), new ObjectOutputStream(os[1])};
         InputStream[] is = {gSock.getInputStream(), vSock.getInputStream()};
         objectInputStreams = new ObjectInputStream[]{new ObjectInputStream(is[0]), new ObjectInputStream(is[1])};
+        objectOutputStreams[0].writeObject(goku);
+        objectOutputStreams[1].writeObject(vegeta);
         objectWriter(game);
         WaitingForAttack waitingForAttack = new WaitingForAttack(5);
         objectWriter(waitingForAttack);
 
-        objectOutputStreams[0].writeObject(goku);
-        objectOutputStreams[1].writeObject(vegeta);
+
         objectWriter(new String("Waiting for attack"));
         boolean waiting = true;
         while(waiting){
@@ -92,7 +93,9 @@ public class Server {
             try{
                 attacks = readAttack();
                 PlayerInfo winner = attacks[0].getAttackValue() > attacks[1].getAttackValue() ? goku: attacks[0].getAttackValue() < attacks[1].getAttackValue() ? vegeta: null;
+
             }
+
             catch (Exception e){
                 e.printStackTrace();
             }
