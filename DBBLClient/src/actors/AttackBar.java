@@ -36,7 +36,6 @@ public class AttackBar extends Actor {
 
     private void updateBar()
     {
-        System.out.println(attackValue);
         attackValue += 1;
         if(attackValue > barHeight) attackValue = 0;
 
@@ -49,7 +48,7 @@ public class AttackBar extends Actor {
 
     public void act()
     {
-        if(Greenfoot.mouseClicked(this))
+        if(Greenfoot.mouseClicked(null))
         {
             onClick.accept(attackValue/2);
             getWorld().removeObject(this);

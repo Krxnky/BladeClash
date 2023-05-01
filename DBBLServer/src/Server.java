@@ -35,7 +35,7 @@ public class Server {
         InputStream[] is = {gSock.getInputStream(), vSock.getInputStream()};
         objectInputStreams = new ObjectInputStream[]{new ObjectInputStream(is[0]), new ObjectInputStream(is[1])};
         objectWriter(game);
-        WaitingForAttack waitingForAttack = new WaitingForAttack(50);
+        WaitingForAttack waitingForAttack = new WaitingForAttack(5);
         objectWriter(waitingForAttack);
 
         objectOutputStreams[0].writeObject(goku);

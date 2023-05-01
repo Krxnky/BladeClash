@@ -2,6 +2,7 @@ package classes;
 
 import enums.GameState;
 import greenfoot.Actor;
+import requests.PlayerInfo;
 import responses.GameInfo;
 import responses.WaitingForAttack;
 import worlds.MainGame;
@@ -69,12 +70,17 @@ public class NetworkHandler implements Runnable {
                     if(obj instanceof GameInfo)
                     {
                         GameInfo gameInfo = (GameInfo) obj;
-                        mainGame.updateGameInfo(gameInfo);
+                        mainGame.setGameInfo(gameInfo);
 
                         if(gameInfo.getState() == GameState.STARTING)
                         {
                             mainGame.startGame();
                         }
+                    }
+                    else if(obj instanceof PlayerInfo)
+                    {
+                        PlayerInfo playerInfo = (PlayerInfo) obj;
+                        mainGame.setLocalPlayerInfo(playerInfo);
                     }
                     else if(obj instanceof WaitingForAttack)
                     {
@@ -97,7 +103,5 @@ public class NetworkHandler implements Runnable {
         public void run() {
 
         }
-
-        public void sendMessage()
     }
 }

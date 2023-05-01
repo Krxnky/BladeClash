@@ -34,7 +34,7 @@ public class MainGame extends World  {
         setBackground(bg);
 
         buildUI();
-        //connectToServer();
+        connectToServer();
     }
 
     public void connectToServer()
@@ -53,14 +53,19 @@ public class MainGame extends World  {
     {
         System.out.println("WAITING FOR ATTACK STARTED SPEED: " + attackBarSpeed);
         attackBar = new AttackBar(attackBarSpeed, (attackValue) -> {
+            System.out.println("GOT ATTACK VALUE: " + attackValue);
             networkHandler.send(new AttackRequest(attackValue, AttackType.BASIC));
         });
         addObject(attackBar, (getBackground().getWidth()/2) - (attackBar.getImage().getWidth()/2), getHeight() - attackBar.getImage().getHeight());
     }
 
-    public void updateGameInfo(GameInfo gameInfo)
+    public void setGameInfo(GameInfo gameInfo)
     {
         this.gameInfo = gameInfo;
+    }
+
+    public void setLocalPlayerInfo(PlayerInfo localPlayerInfo) {
+        this.localPlayerInfo = localPlayerInfo;
     }
 
     public void buildUI()
