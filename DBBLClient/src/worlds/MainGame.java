@@ -9,6 +9,8 @@ import requests.AttackRequest;
 import requests.PlayerInfo;
 import responses.GameInfo;
 
+import java.util.Arrays;
+
 public class MainGame extends World  {
     // UI
     HealthBar playerHealthBar;
@@ -62,11 +64,13 @@ public class MainGame extends World  {
     public void setGameInfo(GameInfo gameInfo)
     {
         this.gameInfo = gameInfo;
+        updateUI();
     }
 
     private void updateUI()
     {
-
+        playerHealthBar.setHealth(localPlayerInfo.getHealth());
+        enemyHealthBar.setHealth(Arrays.stream(gameInfo.getPlayers()).filter(x -> x.getPlayerId() != localPlayerInfo.getPlayerId()).toArray(PlayerInfo[]::new)[0].getHealth());
     }
 
     public void setLocalPlayerInfo(PlayerInfo localPlayerInfo) {

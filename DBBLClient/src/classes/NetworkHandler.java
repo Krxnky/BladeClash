@@ -92,6 +92,7 @@ public class NetworkHandler implements Runnable {
                     {
                         RoundResult roundResult = (RoundResult) obj;
                         mainGame.setGameInfo(roundResult.getUpdatedGameInfo());
+                        mainGame.setLocalPlayerInfo(roundResult.getUpdatedLocalPlayerInfo());
                     }
 
                 }
