@@ -3,6 +3,7 @@ import enums.GameState;
 import requests.AttackRequest;
 import requests.PlayerInfo;
 import responses.GameInfo;
+import responses.RoundResult;
 import responses.WaitingForAttack;
 
 import java.io.InputStream;
@@ -40,12 +41,13 @@ public class Server {
         WaitingForAttack waitingForAttack = new WaitingForAttack(5);
         objectWriter(waitingForAttack);
 
+        System.out.println("roundResult sent to clients!!");
 
         objectWriter(new String("Waiting for attack"));
-        boolean waiting = true;
-        while(waiting){
-            Thread attackThread = new Thread(new AttackAcceptor());
-        }
+        Thread attackThread = new Thread(new AttackAcceptor());
+        attackThread.join();
+        RoundResult roundResult = new RoundResult(game);
+        objectWriter(roundResult);
         while(true){}
     }
     public static void objectWriter(Object object) throws Exception{
@@ -53,6 +55,10 @@ public class Server {
         objectOutputStreams[1].writeObject(object);
         objectOutputStreams[0].flush();
         objectOutputStreams[1].flush();
+    }
+    public static void localObjectWriter(ObjectOutputStream oos, Object object) throws Exception{
+        oos.writeObject(object);
+        oos.flush();
     }
     public static AttackRequest[] readAttack() throws Exception{
         AttackRequest[] objects = new AttackRequest[2];
@@ -93,7 +99,12 @@ public class Server {
             try{
                 attacks = readAttack();
                 PlayerInfo winner = attacks[0].getAttackValue() > attacks[1].getAttackValue() ? goku: attacks[0].getAttackValue() < attacks[1].getAttackValue() ? vegeta: null;
-
+                if (winner.equals(goku)) {
+                    vegeta.setHealth(vegeta.getHealth() - attacks[0].getAttackValue());
+                }
+                else if (winner.equals(vegeta)) {
+                    goku.setHealth(goku.getHealth() - attacks[1].getAttackValue());
+                }
             }
 
             catch (Exception e){

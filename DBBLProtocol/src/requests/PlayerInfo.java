@@ -5,7 +5,7 @@ import java.io.Serializable;
 public class PlayerInfo implements Serializable {
     private final int playerId;
     private final String ip;
-    private final int health;
+    private /*final*/ int health;
 
     public PlayerInfo(int playerId, String ip, int health)
     {
@@ -18,6 +18,7 @@ public class PlayerInfo implements Serializable {
         return health;
     }
 
+    public void setHealth(int health){ this.health = health;}
     public int getPlayerId() {
         return playerId;
     }
