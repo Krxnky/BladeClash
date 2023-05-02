@@ -81,7 +81,7 @@ public class MainGame extends World  {
 
     private void updateUI()
     {
-        playerHealthBar.setHealth(localPlayerInfo.getHealth());
+        playerHealthBar.setHealth(gameInfo.getPlayers());
         enemyHealthBar.setHealth(Arrays.stream(gameInfo.getPlayers()).filter(x -> x.getPlayerId() != localPlayerInfo.getPlayerId()).toArray(PlayerInfo[]::new)[0].getHealth());
     }
 
