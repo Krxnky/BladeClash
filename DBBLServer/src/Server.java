@@ -44,14 +44,14 @@ public class Server {
 
         System.out.println("roundResult sent to clients!!");
 
-        objectWriter(new String("Waiting for attack"));
         Thread attackThread = new Thread(new AttackAcceptor());
+        attackThread.start();
 
         attackThread.join();
         game.setState(GameState.ROUND_ENDED);
         System.out.println("Round Ended!");
 //        RoundResult roundResult = new RoundResult(game);
-        objectWriter(game);
+        System.out.println(game.getState());
 
         while(true){}
     }
@@ -111,6 +111,11 @@ public class Server {
                 }
                 game.setState(GameState.ATTACK_FINISHED);
                 game.updatePlayerInfo(new PlayerInfo[]{goku, vegeta});
+                System.out.println(game.getPlayers()[0].getHealth());
+                System.out.println(game.getPlayers()[1].getHealth());
+                System.out.println(game.getState());
+
+                objectWriter(game);
                 System.out.println("Updated players");
             }
 

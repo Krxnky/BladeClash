@@ -67,11 +67,14 @@ public class NetworkHandler implements Runnable {
                 while(!socket.isClosed())
                 {
                     Object obj = objectInputStream.readObject();
-                    System.out.println("GOT MESSAGE FROM SERVER" + obj.toString());
+                    System.out.println("GOT MESSAGE FROM SERVER " + obj.toString());
                     if(obj instanceof GameInfo)
                     {
                         GameInfo gameInfo = (GameInfo) obj;
                         mainGame.setGameInfo(gameInfo);
+
+                        System.out.println(gameInfo.getPlayers()[0].getHealth());
+                        System.out.println(gameInfo.getPlayers()[1].getHealth());
                     }
                     else if(obj instanceof PlayerInfo)
                     {
@@ -83,12 +86,6 @@ public class NetworkHandler implements Runnable {
                         WaitingForAttack waitingForAttack = (WaitingForAttack) obj;
                         mainGame.waitingForAttack(waitingForAttack.getAttackBarSpeed());
                     }
-                    else if(obj instanceof RoundResult)
-                    {
-                        RoundResult roundResult = (RoundResult) obj;
-                        mainGame.setGameInfo(roundResult.getUpdatedGameInfo());
-                    }
-
                 }
             } catch (IOException e) {
                 e.printStackTrace();

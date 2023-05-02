@@ -5,7 +5,7 @@ import java.io.Serializable;
 public class PlayerInfo implements Serializable {
     private final int playerId;
     private final String ip;
-    private /*final*/ int health;
+    private int health;
 
     public PlayerInfo(int playerId, String ip, int health)
     {
