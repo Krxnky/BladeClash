@@ -114,6 +114,7 @@ public class Server {
                 System.out.println(game.getPlayers()[0].getHealth());
                 System.out.println(game.getPlayers()[1].getHealth());
                 System.out.println(game.getState());
+                GameInfo update = new GameInfo(game.getGameId(), game.getPlayers(), game.getState());
 
                 objectWriter(game);
                 System.out.println("Updated players");
