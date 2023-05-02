@@ -95,9 +95,7 @@ public class Server {
     }
     private static class AttackAcceptor implements Runnable{
         private AttackRequest[] attacks;
-        public AttackAcceptor(){
-
-        }
+        public AttackAcceptor(){}
 
         @Override
         public void run() {
@@ -112,6 +110,8 @@ public class Server {
                     goku.setHealth(goku.getHealth() - attacks[1].getAttackValue());
                 }
                 game.setState(GameState.ATTACK_FINISHED);
+                game.updatePlayerInfo(new PlayerInfo[]{goku, vegeta});
+                System.out.println("Updated players");
             }
 
             catch (Exception e){

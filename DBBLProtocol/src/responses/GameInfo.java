@@ -7,9 +7,9 @@ import java.io.Serializable;
 import java.util.List;
 
 public class GameInfo implements Serializable {
-    private final int GameId;
-    private final PlayerInfo[] Players;
-    private /*final*/ GameState State;
+    private int GameId;
+    private PlayerInfo[] Players;
+    private GameState State;
     private int round;
     private int attackSpeed;
 
@@ -34,6 +34,9 @@ public class GameInfo implements Serializable {
     }
     public void setState(GameState gs){
         State =gs;
+    }
+    public void updatePlayerInfo(PlayerInfo[] playerInfos){
+        Players = playerInfos;
     }
 
 }
