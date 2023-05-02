@@ -14,6 +14,7 @@ import java.net.ServerSocket;
 import java.net.Socket;
 
 public class Server {
+    private static GameInfo game;
     private static ServerSocket serverSocket;
     private static Socket gSock;
     private static Socket vSock;
@@ -29,7 +30,7 @@ public class Server {
         acceptThread.join();
         System.out.println("Starting Game...");
         Thread.sleep(1000);
-        GameInfo game = new GameInfo(1, new PlayerInfo[]{goku, vegeta}, GameState.STARTING);
+        game = new GameInfo(1, new PlayerInfo[]{goku, vegeta}, GameState.STARTING);
         System.out.println("Game started");
         OutputStream[] os = {gSock.getOutputStream(), vSock.getOutputStream()};
         objectOutputStreams = new ObjectOutputStream[]{new ObjectOutputStream(os[0]), new ObjectOutputStream(os[1])};
@@ -45,9 +46,11 @@ public class Server {
 
         objectWriter(new String("Waiting for attack"));
         Thread attackThread = new Thread(new AttackAcceptor());
+
         attackThread.join();
-        RoundResult roundResult = new RoundResult(game);
-        objectWriter(roundResult);
+        game.setState(GameState.ROUND_ENDED);
+//        RoundResult roundResult = new RoundResult(game);
+        objectWriter(game);
         while(true){}
     }
     public static void objectWriter(Object object) throws Exception{
@@ -97,6 +100,7 @@ public class Server {
         @Override
         public void run() {
             try{
+                game.setState(GameState.ATTACK_PROCESS_STARTED);
                 attacks = readAttack();
                 PlayerInfo winner = attacks[0].getAttackValue() > attacks[1].getAttackValue() ? goku: attacks[0].getAttackValue() < attacks[1].getAttackValue() ? vegeta: null;
                 if (winner.equals(goku)) {
@@ -105,6 +109,7 @@ public class Server {
                 else if (winner.equals(vegeta)) {
                     goku.setHealth(goku.getHealth() - attacks[1].getAttackValue());
                 }
+                game.setState(GameState.ATTACK_FINISHED);
             }
 
             catch (Exception e){

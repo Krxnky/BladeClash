@@ -8,7 +8,7 @@ import java.io.Serializable;
 public class GameInfo implements Serializable {
     private final int GameId;
     private final PlayerInfo[] Players;
-    private final GameState State;
+    private /*final*/ GameState State;
     private int round;
     private int attackSpeed;
 
@@ -30,6 +30,9 @@ public class GameInfo implements Serializable {
 
     public GameState getState() {
         return State;
+    }
+    public void setState(GameState gs){
+        State =gs;
     }
 
 }
