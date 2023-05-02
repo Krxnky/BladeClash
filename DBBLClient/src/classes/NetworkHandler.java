@@ -72,11 +72,6 @@ public class NetworkHandler implements Runnable {
                     {
                         GameInfo gameInfo = (GameInfo) obj;
                         mainGame.setGameInfo(gameInfo);
-
-                        if(gameInfo.getState() == GameState.STARTING)
-                        {
-                            mainGame.startGame();
-                        }
                     }
                     else if(obj instanceof PlayerInfo)
                     {
@@ -92,7 +87,6 @@ public class NetworkHandler implements Runnable {
                     {
                         RoundResult roundResult = (RoundResult) obj;
                         mainGame.setGameInfo(roundResult.getUpdatedGameInfo());
-                        mainGame.setLocalPlayerInfo(roundResult.getUpdatedLocalPlayerInfo());
                     }
 
                 }

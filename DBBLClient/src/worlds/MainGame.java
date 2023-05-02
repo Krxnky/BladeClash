@@ -3,6 +3,7 @@ package worlds;
 import actors.*;
 import classes.NetworkHandler;
 import enums.AttackType;
+import enums.GameState;
 import greenfoot.GreenfootImage;
 import greenfoot.World;
 import requests.AttackRequest;
@@ -64,6 +65,17 @@ public class MainGame extends World  {
     public void setGameInfo(GameInfo gameInfo)
     {
         this.gameInfo = gameInfo;
+
+        if(gameInfo.getState() == GameState.STARTING) startGame();
+        else if(gameInfo.getState() == GameState.ROUND_ENDED)
+        {
+
+        }
+        else if(gameInfo.getState() == GameState.GAME_OVER)
+        {
+
+        }
+
         updateUI();
     }
 
@@ -83,8 +95,8 @@ public class MainGame extends World  {
 
 
         // Create Healthbar UI actors
-        playerHealthBar = new HealthBar(100);
-        enemyHealthBar = new HealthBar(100);
+        playerHealthBar = new HealthBar(0);
+        enemyHealthBar = new HealthBar(0);
 
         addObject(playerHealthBar, playerHealthBar.getImage().getWidth() + 150, 30);
         addObject(enemyHealthBar, getWidth() - enemyHealthBar.getImage().getWidth() - 150, 30);
