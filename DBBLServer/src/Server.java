@@ -49,8 +49,10 @@ public class Server {
 
         attackThread.join();
         game.setState(GameState.ROUND_ENDED);
+        System.out.println("Round Ended!");
 //        RoundResult roundResult = new RoundResult(game);
         objectWriter(game);
+
         while(true){}
     }
     public static void objectWriter(Object object) throws Exception{
