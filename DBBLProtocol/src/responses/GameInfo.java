@@ -8,12 +8,12 @@ import java.util.List;
 
 public class GameInfo implements Serializable {
     private final int GameId;
-    private final List<PlayerInfo> Players;
+    private final PlayerInfo[] Players;
     private /*final*/ GameState State;
     private int round;
     private int attackSpeed;
 
-    public GameInfo(int GameId, List<PlayerInfo> Players, GameState State)
+    public GameInfo(int GameId, PlayerInfo[] Players, GameState State)
     {
         this.GameId = GameId;
         this.Players = Players;
@@ -25,7 +25,7 @@ public class GameInfo implements Serializable {
         return GameId;
     }
 
-    public List<PlayerInfo> getPlayers() {
+    public PlayerInfo[] getPlayers() {
         return Players;
     }
 
