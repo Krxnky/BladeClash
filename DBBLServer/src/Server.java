@@ -38,21 +38,23 @@ public class Server {
         objectInputStreams = new ObjectInputStream[]{new ObjectInputStream(is[0]), new ObjectInputStream(is[1])};
         objectOutputStreams[0].writeObject(goku);
         objectOutputStreams[1].writeObject(vegeta);
-        objectWriter(game);
-        WaitingForAttack waitingForAttack = new WaitingForAttack(5);
-        objectWriter(waitingForAttack);
 
-        System.out.println("roundResult sent to clients!!");
+        while(goku.getHealth() > 0 && vegeta.getHealth() > 0){
+            objectWriter(game);
+            WaitingForAttack waitingForAttack = new WaitingForAttack(5);
+            objectWriter(waitingForAttack);
 
-        Thread attackThread = new Thread(new AttackAcceptor());
-        attackThread.start();
+            System.out.println("roundResult sent to clients!!");
 
-        attackThread.join();
-        game.setState(GameState.ROUND_ENDED);
-        System.out.println("Round Ended!");
+            Thread attackThread = new Thread(new AttackAcceptor());
+            attackThread.start();
+
+            attackThread.join();
+            game.setState(GameState.ROUND_ENDED);
+            System.out.println("Round Ended!");
 //        RoundResult roundResult = new RoundResult(game);
-        System.out.println(game.getState());
-        objectWriter(game);
+            System.out.println(game.getState());
+        }
 
         while(true){}
     }
@@ -72,7 +74,6 @@ public class Server {
     public static AttackRequest[] readAttack() throws Exception{
         AttackRequest[] objects = new AttackRequest[2];
         Object gokuAttack = objectInputStreams[0].readObject();
-        System.out.println("GOT GOKU ATTACK");
         Object vegetaAttack = objectInputStreams[1].readObject();
         objects[0] = gokuAttack instanceof AttackRequest ? (AttackRequest) gokuAttack : null;
         objects[1] = vegetaAttack instanceof AttackRequest ? (AttackRequest) vegetaAttack : null;
@@ -121,7 +122,7 @@ public class Server {
                 System.out.println(game.getState());
                 GameInfo update = new GameInfo(game.getGameId(), game.getPlayers(), game.getState());
 
-                System.out.println(game.toString());
+                objectWriter(game);
                 System.out.println("Updated players");
             }
 
