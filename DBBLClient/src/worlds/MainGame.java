@@ -66,6 +66,7 @@ public class MainGame extends World  {
     {
         this.gameInfo = gameInfo;
 
+        System.out.println(gameInfo.getState());
         if(gameInfo.getState() == GameState.STARTING) startGame();
         else if(gameInfo.getState() == GameState.ROUND_ENDED)
         {

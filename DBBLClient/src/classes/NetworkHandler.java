@@ -67,7 +67,8 @@ public class NetworkHandler implements Runnable {
                 while(!socket.isClosed())
                 {
                     Object obj = objectInputStream.readObject();
-                    System.out.println("GOT MESSAGE FROM SERVER " + obj.toString());
+
+                    System.out.println("GOT MESSAGE FROM SERVER " + obj.toString() + " " + obj);
                     if(obj instanceof GameInfo)
                     {
                         GameInfo gameInfo = (GameInfo) obj;

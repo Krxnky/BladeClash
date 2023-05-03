@@ -52,6 +52,7 @@ public class Server {
         System.out.println("Round Ended!");
 //        RoundResult roundResult = new RoundResult(game);
         System.out.println(game.getState());
+        objectWriter(game);
 
         while(true){}
     }
@@ -60,6 +61,9 @@ public class Server {
         objectOutputStreams[1].writeObject(object);
         objectOutputStreams[0].flush();
         objectOutputStreams[1].flush();
+
+        objectOutputStreams[0].reset();
+        objectOutputStreams[1].reset();
     }
     public static void localObjectWriter(ObjectOutputStream oos, Object object) throws Exception{
         oos.writeObject(object);
@@ -68,6 +72,7 @@ public class Server {
     public static AttackRequest[] readAttack() throws Exception{
         AttackRequest[] objects = new AttackRequest[2];
         Object gokuAttack = objectInputStreams[0].readObject();
+        System.out.println("GOT GOKU ATTACK");
         Object vegetaAttack = objectInputStreams[1].readObject();
         objects[0] = gokuAttack instanceof AttackRequest ? (AttackRequest) gokuAttack : null;
         objects[1] = vegetaAttack instanceof AttackRequest ? (AttackRequest) vegetaAttack : null;
@@ -116,7 +121,7 @@ public class Server {
                 System.out.println(game.getState());
                 GameInfo update = new GameInfo(game.getGameId(), game.getPlayers(), game.getState());
 
-                objectWriter(game);
+                System.out.println(game.toString());
                 System.out.println("Updated players");
             }
 

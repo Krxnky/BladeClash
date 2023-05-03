@@ -10,15 +10,12 @@ public class GameInfo implements Serializable {
     private int GameId;
     private PlayerInfo[] Players;
     private GameState State;
-    private int round;
-    private int attackSpeed;
 
     public GameInfo(int GameId, PlayerInfo[] Players, GameState State)
     {
         this.GameId = GameId;
         this.Players = Players;
         this.State = State;
-        round = 1;
     }
 
     public int getGameId() {
@@ -32,8 +29,9 @@ public class GameInfo implements Serializable {
     public GameState getState() {
         return State;
     }
+
     public void setState(GameState gs){
-        State =gs;
+        State = gs;
     }
     public void updatePlayerInfo(PlayerInfo[] playerInfos){
         Players = playerInfos;
