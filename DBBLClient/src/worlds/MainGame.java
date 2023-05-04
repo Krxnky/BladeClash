@@ -82,6 +82,9 @@ public class MainGame extends World  {
 
     private void updateUI()
     {
+
+        System.out.println("UI PLAYER HEALTH: " + Arrays.stream(gameInfo.getPlayers()).filter(x -> x.getPlayerId() == localPlayerInfo.getPlayerId()).toArray(PlayerInfo[]::new)[0].getHealth());
+        System.out.println("UI ENEMNY HEALTH: " + Arrays.stream(gameInfo.getPlayers()).filter(x -> x.getPlayerId() != localPlayerInfo.getPlayerId()).toArray(PlayerInfo[]::new)[0].getHealth());
         playerHealthBar.setHealth(Arrays.stream(gameInfo.getPlayers()).filter(x -> x.getPlayerId() == localPlayerInfo.getPlayerId()).toArray(PlayerInfo[]::new)[0].getHealth());
         enemyHealthBar.setHealth(Arrays.stream(gameInfo.getPlayers()).filter(x -> x.getPlayerId() != localPlayerInfo.getPlayerId()).toArray(PlayerInfo[]::new)[0].getHealth());
     }
@@ -96,8 +99,8 @@ public class MainGame extends World  {
 
 
         // Create Healthbar UI actors
-        playerHealthBar = new HealthBar(0);
-        enemyHealthBar = new HealthBar(0);
+        playerHealthBar = new HealthBar(1000, false);
+        enemyHealthBar = new HealthBar(1000, true);
 
         addObject(playerHealthBar, playerHealthBar.getImage().getWidth() + 150, 30);
         addObject(enemyHealthBar, getWidth() - enemyHealthBar.getImage().getWidth() - 150, 30);
