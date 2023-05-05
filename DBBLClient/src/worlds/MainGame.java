@@ -102,8 +102,8 @@ public class MainGame extends World  {
         playerHealthBar = new HealthBar(1000, false);
         enemyHealthBar = new HealthBar(1000, true);
 
-        addObject(playerHealthBar, playerHealthBar.getImage().getWidth() + 150, 30);
-        addObject(enemyHealthBar, getWidth() - enemyHealthBar.getImage().getWidth() - 150, 30);
+        addObject(playerHealthBar, playerHealthBar.getImage().getWidth() + 200, 30);
+        addObject(enemyHealthBar, getWidth() - enemyHealthBar.getImage().getWidth() - 200, 30);
 
         // Create characters
         playerCharacter = new Goku();

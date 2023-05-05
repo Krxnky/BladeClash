@@ -7,7 +7,7 @@ import greenfoot.GreenfootImage;
 public class HealthBar extends Actor {
     private int health = 1000;
     private boolean isEnemy;
-    private int healthBarWidth = 300;
+    private int healthBarWidth = 375;
     private int healthBarHeight = 15;
     private double pixelsPerHealthPoint = (double)healthBarWidth/(double)health;
 
@@ -24,18 +24,19 @@ public class HealthBar extends Actor {
     @Override
     public void act()
     {
-        setImage(new GreenfootImage(healthBarWidth+2, healthBarHeight+25));
+        GreenfootImage healthbarBorder = new GreenfootImage("healthbar_border.png");
+        setImage(healthbarBorder);
         getImage().setColor(Color.BLACK);
-        getImage().drawRect(0, 20, healthBarWidth+1, healthBarHeight+1);
+        getImage().drawRect(25, 5, healthBarWidth+1, healthBarHeight+1);
         getImage().setColor(Color.RED);
-        getImage().fillRect(1, 21, healthBarWidth, healthBarHeight);
+        getImage().fillRect(26, 6, healthBarWidth, healthBarHeight);
         getImage().setColor(Color.GREEN);
-        getImage().fillRect(1, 21, (int) ((double)health*pixelsPerHealthPoint), healthBarHeight);
+        getImage().fillRect(26, 6, (int) ((double)health*pixelsPerHealthPoint), healthBarHeight);
         if(isEnemy) getImage().mirrorHorizontally();
-        GreenfootImage healhText = new GreenfootImage(String.format("%,.0f", (double)health), 20, Color.WHITE, null);
-        GreenfootImage healhTextShadow = new GreenfootImage(String.format("%,.0f", (double)health), 20, new Color(0, 0, 0), null);
-        getImage().drawImage(healhTextShadow, (isEnemy) ? getImage().getWidth() - healhTextShadow.getWidth() : 0, 2);
-        getImage().drawImage(healhText, (isEnemy) ? getImage().getWidth() - healhText.getWidth() : 0, 0);
+        GreenfootImage healhText = new GreenfootImage(String.format("%,.0f", (double)health), 15, Color.WHITE, null);
+        GreenfootImage healhTextShadow = new GreenfootImage(String.format("%,.0f", (double)health), 15, new Color(0, 0, 0), null);
+        getImage().drawImage(healhTextShadow, (isEnemy) ? getImage().getWidth() - healhTextShadow.getWidth() - 5 : 5, 22);
+        getImage().drawImage(healhText, (isEnemy) ? getImage().getWidth() - healhText.getWidth() - 5: 5, 20);
 
 
     }
