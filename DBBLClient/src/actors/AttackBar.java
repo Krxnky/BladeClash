@@ -8,8 +8,11 @@ import greenfoot.GreenfootImage;
 import java.util.function.Consumer;
 
 public class AttackBar extends Actor {
-    private int barWidth = 75;
-    private int barHeight = 300;
+    private int barWidth = 40;
+    private int barHeight = 359;
+
+    private int xOffset = 8;
+    private int yOffset = 8;
 
     private int attackValue = 0;
     private int barSpeed;
@@ -20,18 +23,12 @@ public class AttackBar extends Actor {
         this.barSpeed = barSpeed;
         this.onClick = onClick;
 
-        setImage(new GreenfootImage(barWidth+2, barHeight+2));
+        setImage(new GreenfootImage("attackbar.png"));
         getImage().setColor(Color.BLACK);
-        getImage().drawRect(0, 0, barWidth+1, barHeight+1);
+        getImage().drawRect(xOffset-1, yOffset-1, barWidth+1, barHeight+1);
         getImage().setColor(Color.GRAY);
-        getImage().fillRect(1, 1, barWidth, barHeight);
+        getImage().fillRect(xOffset, yOffset, barWidth, barHeight);
         setRotation(180);
-    }
-
-    public int getAttackValue()
-    {
-        getWorld().removeObject(this);
-        return attackValue / 2;
     }
 
     private void updateBar()
@@ -40,10 +37,10 @@ public class AttackBar extends Actor {
         if(attackValue > barHeight) attackValue = 0;
 
         getImage().setColor(Color.GRAY);
-        getImage().fillRect(1, 1, barWidth, barHeight);
+        getImage().fillRect(xOffset, yOffset, barWidth, barHeight);
 
-        getImage().setColor(Color.ORANGE);
-        getImage().fillRect(1, 1, barWidth, attackValue);
+        getImage().setColor(new Color(255, 135, 0));
+        getImage().fillRect(xOffset, yOffset, barWidth, attackValue);
     }
 
     public void act()

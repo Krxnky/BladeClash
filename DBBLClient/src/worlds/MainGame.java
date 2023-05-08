@@ -2,6 +2,7 @@ package worlds;
 
 import actors.*;
 import classes.NetworkHandler;
+import com.sun.javafx.iio.gif.GIFImageLoader2;
 import enums.AttackType;
 import enums.GameState;
 import greenfoot.GreenfootImage;
@@ -59,7 +60,12 @@ public class MainGame extends World  {
             System.out.println("GOT ATTACK VALUE: " + attackValue);
             networkHandler.send(new AttackRequest(attackValue, AttackType.BASIC));
         });
-        addObject(attackBar, (getBackground().getWidth()/2) - (attackBar.getImage().getWidth()/2), getHeight() - attackBar.getImage().getHeight());
+
+        System.out.println(attackBar.getImage().getWidth());
+        System.out.println(attackBar.getImage().getHeight());
+        System.out.println(getWidth());
+        System.out.println(getHeight());
+        addObject(attackBar, 1000/2, 600/2);
     }
 
     public void setGameInfo(GameInfo gameInfo)
@@ -96,7 +102,7 @@ public class MainGame extends World  {
     public void buildUI()
     {
         // UI TESTING
-
+        //addObject(new AttackBar(5, (t) -> {}), 600, 400);
 
         // Create Healthbar UI actors
         playerHealthBar = new HealthBar(1000, false);
