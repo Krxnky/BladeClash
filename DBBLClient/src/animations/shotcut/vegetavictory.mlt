@@ -1,0 +1,402 @@
+<?xml version="1.0" standalone="no"?>
+<mlt LC_NUMERIC="C" version="7.15.0" title="Shotcut version 23.05.07" producer="main_bin">
+  <profile description="PAL 4:3 DV or DVD" width="1920" height="1080" progressive="1" sample_aspect_num="1" sample_aspect_den="1" display_aspect_num="16" display_aspect_den="9" frame_rate_num="25" frame_rate_den="1" colorspace="709"/>
+  <producer id="producer0" in="00:00:00.000" out="00:00:03.960">
+    <property name="length">04:00:00.000</property>
+    <property name="eof">pause</property>
+    <property name="resource">C:/Users/111356/Documents/GitHub/BladeClash/DBBLClient/src/images/vegetavictory1.png</property>
+    <property name="ttl">1</property>
+    <property name="aspect_ratio">1</property>
+    <property name="progressive">1</property>
+    <property name="seekable">1</property>
+    <property name="format">2</property>
+    <property name="mlt_service">qimage</property>
+    <property name="shotcut:hash">1efe87f184e07a651e8db3ce02c5b47e</property>
+    <property name="creation_time">2023-05-09T16:16:14</property>
+    <property name="xml">was here</property>
+    <property name="shotcut:caption">vegetavictory1.png</property>
+    <property name="ignore_points">1</property>
+  </producer>
+  <producer id="producer1" in="00:00:00.000" out="00:00:03.960">
+    <property name="length">04:00:00.000</property>
+    <property name="eof">pause</property>
+    <property name="resource">C:/Users/111356/Documents/GitHub/BladeClash/DBBLClient/src/images/vegetavictory2.png</property>
+    <property name="ttl">1</property>
+    <property name="aspect_ratio">1</property>
+    <property name="progressive">1</property>
+    <property name="seekable">1</property>
+    <property name="format">2</property>
+    <property name="mlt_service">qimage</property>
+    <property name="shotcut:hash">173250e86d82d62a91aa096ee14caddb</property>
+    <property name="creation_time">2023-05-09T16:16:23</property>
+    <property name="xml">was here</property>
+    <property name="shotcut:caption">vegetavictory2.png</property>
+    <property name="ignore_points">1</property>
+  </producer>
+  <producer id="producer2" in="00:00:00.000" out="00:00:03.960">
+    <property name="length">04:00:00.000</property>
+    <property name="eof">pause</property>
+    <property name="resource">C:/Users/111356/Documents/GitHub/BladeClash/DBBLClient/src/images/vegetavictory3.png</property>
+    <property name="ttl">1</property>
+    <property name="aspect_ratio">1</property>
+    <property name="progressive">1</property>
+    <property name="seekable">1</property>
+    <property name="format">2</property>
+    <property name="mlt_service">qimage</property>
+    <property name="shotcut:hash">f667085f0be9c75cbb1f1325648c891d</property>
+    <property name="creation_time">2023-05-09T16:16:29</property>
+    <property name="xml">was here</property>
+    <property name="shotcut:caption">vegetavictory3.png</property>
+    <property name="ignore_points">1</property>
+  </producer>
+  <producer id="producer3" in="00:00:00.000" out="00:00:03.960">
+    <property name="length">04:00:00.000</property>
+    <property name="eof">pause</property>
+    <property name="resource">C:/Users/111356/Documents/GitHub/BladeClash/DBBLClient/src/images/vegetavictory4.png</property>
+    <property name="ttl">1</property>
+    <property name="aspect_ratio">1</property>
+    <property name="progressive">1</property>
+    <property name="seekable">1</property>
+    <property name="format">2</property>
+    <property name="mlt_service">qimage</property>
+    <property name="shotcut:hash">ec15ffe0172631c9a7d43982eaa1e3b0</property>
+    <property name="creation_time">2023-05-09T16:16:36</property>
+    <property name="xml">was here</property>
+    <property name="shotcut:caption">vegetavictory4.png</property>
+    <property name="ignore_points">1</property>
+  </producer>
+  <producer id="producer4" in="00:00:00.000" out="00:00:03.960">
+    <property name="length">04:00:00.000</property>
+    <property name="eof">pause</property>
+    <property name="resource">C:/Users/111356/Documents/GitHub/BladeClash/DBBLClient/src/images/vegetavictory5.png</property>
+    <property name="ttl">1</property>
+    <property name="aspect_ratio">1</property>
+    <property name="progressive">1</property>
+    <property name="seekable">1</property>
+    <property name="format">2</property>
+    <property name="mlt_service">qimage</property>
+    <property name="shotcut:hash">54364c9c4667753bdd84ff38be234783</property>
+    <property name="creation_time">2023-05-09T16:16:46</property>
+    <property name="xml">was here</property>
+    <property name="shotcut:caption">vegetavictory5.png</property>
+    <property name="ignore_points">1</property>
+  </producer>
+  <producer id="producer5" in="00:00:00.000" out="00:00:03.960">
+    <property name="length">04:00:00.000</property>
+    <property name="eof">pause</property>
+    <property name="resource">C:/Users/111356/Documents/GitHub/BladeClash/DBBLClient/src/images/vegetavictory6.png</property>
+    <property name="ttl">1</property>
+    <property name="aspect_ratio">1</property>
+    <property name="progressive">1</property>
+    <property name="seekable">1</property>
+    <property name="format">2</property>
+    <property name="mlt_service">qimage</property>
+    <property name="shotcut:hash">01aca64b8dadba125b6c2318386f14fc</property>
+    <property name="creation_time">2023-05-09T16:16:53</property>
+    <property name="xml">was here</property>
+    <property name="shotcut:caption">vegetavictory6.png</property>
+    <property name="ignore_points">1</property>
+  </producer>
+  <producer id="producer6" in="00:00:00.000" out="00:00:03.960">
+    <property name="length">04:00:00.000</property>
+    <property name="eof">pause</property>
+    <property name="resource">C:/Users/111356/Documents/GitHub/BladeClash/DBBLClient/src/images/vegetavictory7.png</property>
+    <property name="ttl">1</property>
+    <property name="aspect_ratio">1</property>
+    <property name="progressive">1</property>
+    <property name="seekable">1</property>
+    <property name="format">2</property>
+    <property name="mlt_service">qimage</property>
+    <property name="shotcut:hash">f31ce77021c359f504a2fe934430e63d</property>
+    <property name="creation_time">2023-05-09T16:17:05</property>
+    <property name="xml">was here</property>
+    <property name="shotcut:caption">vegetavictory7.png</property>
+    <property name="ignore_points">1</property>
+  </producer>
+  <producer id="producer7" in="00:00:00.000" out="00:00:03.960">
+    <property name="length">04:00:00.000</property>
+    <property name="eof">pause</property>
+    <property name="resource">C:/Users/111356/Documents/GitHub/BladeClash/DBBLClient/src/images/vegetavictory8.png</property>
+    <property name="ttl">1</property>
+    <property name="aspect_ratio">1</property>
+    <property name="progressive">1</property>
+    <property name="seekable">1</property>
+    <property name="format">2</property>
+    <property name="mlt_service">qimage</property>
+    <property name="shotcut:hash">a33d2ea86a775c242eb7150ef025578f</property>
+    <property name="creation_time">2023-05-09T16:17:12</property>
+    <property name="xml">was here</property>
+    <property name="shotcut:caption">vegetavictory8.png</property>
+    <property name="ignore_points">1</property>
+  </producer>
+  <producer id="producer8" in="00:00:00.000" out="00:00:03.960">
+    <property name="length">04:00:00.000</property>
+    <property name="eof">pause</property>
+    <property name="resource">C:/Users/111356/Documents/GitHub/BladeClash/DBBLClient/src/images/vegetavictory9.png</property>
+    <property name="ttl">1</property>
+    <property name="aspect_ratio">1</property>
+    <property name="progressive">1</property>
+    <property name="seekable">1</property>
+    <property name="format">2</property>
+    <property name="mlt_service">qimage</property>
+    <property name="shotcut:hash">fd41f32e63dfdcdde817679fa48fa01d</property>
+    <property name="creation_time">2023-05-09T16:17:23</property>
+    <property name="xml">was here</property>
+    <property name="shotcut:caption">vegetavictory9.png</property>
+    <property name="ignore_points">1</property>
+  </producer>
+  <playlist id="main_bin">
+    <property name="xml_retain">1</property>
+    <entry producer="producer0" in="00:00:00.000" out="00:00:03.960"/>
+    <entry producer="producer1" in="00:00:00.000" out="00:00:03.960"/>
+    <entry producer="producer2" in="00:00:00.000" out="00:00:03.960"/>
+    <entry producer="producer3" in="00:00:00.000" out="00:00:03.960"/>
+    <entry producer="producer4" in="00:00:00.000" out="00:00:03.960"/>
+    <entry producer="producer5" in="00:00:00.000" out="00:00:03.960"/>
+    <entry producer="producer6" in="00:00:00.000" out="00:00:03.960"/>
+    <entry producer="producer7" in="00:00:00.000" out="00:00:03.960"/>
+    <entry producer="producer8" in="00:00:00.000" out="00:00:03.960"/>
+  </playlist>
+  <producer id="black" in="00:00:00.000" out="00:00:03.040">
+    <property name="length">00:00:03.080</property>
+    <property name="eof">pause</property>
+    <property name="resource">0</property>
+    <property name="aspect_ratio">1</property>
+    <property name="mlt_service">color</property>
+    <property name="mlt_image_format">rgba</property>
+    <property name="set.test_audio">0</property>
+  </producer>
+  <playlist id="background">
+    <entry producer="black" in="00:00:00.000" out="00:00:03.040"/>
+  </playlist>
+  <producer id="producer9" in="00:00:00.000" out="03:59:59.960">
+    <property name="length">04:00:00.000</property>
+    <property name="eof">pause</property>
+    <property name="resource">C:/Users/111356/Documents/GitHub/BladeClash/DBBLClient/src/images/vegetavictory1.png</property>
+    <property name="ttl">1</property>
+    <property name="aspect_ratio">1</property>
+    <property name="progressive">1</property>
+    <property name="seekable">1</property>
+    <property name="format">2</property>
+    <property name="mlt_service">qimage</property>
+    <property name="shotcut:hash">1efe87f184e07a651e8db3ce02c5b47e</property>
+    <property name="creation_time">2023-05-09T16:16:14</property>
+    <property name="xml">was here</property>
+    <property name="shotcut:caption">vegetavictory1.png</property>
+  </producer>
+  <producer id="producer10" in="00:00:00.000" out="03:59:59.960">
+    <property name="length">04:00:00.000</property>
+    <property name="eof">pause</property>
+    <property name="resource">C:/Users/111356/Documents/GitHub/BladeClash/DBBLClient/src/images/vegetavictory2.png</property>
+    <property name="ttl">1</property>
+    <property name="aspect_ratio">1</property>
+    <property name="progressive">1</property>
+    <property name="seekable">1</property>
+    <property name="format">2</property>
+    <property name="mlt_service">qimage</property>
+    <property name="shotcut:hash">173250e86d82d62a91aa096ee14caddb</property>
+    <property name="creation_time">2023-05-09T16:16:23</property>
+    <property name="xml">was here</property>
+    <property name="shotcut:caption">vegetavictory2.png</property>
+    <property name="ignore_points">0</property>
+  </producer>
+  <producer id="producer11" in="00:00:00.000" out="03:59:59.960">
+    <property name="length">04:00:00.000</property>
+    <property name="eof">pause</property>
+    <property name="resource">C:/Users/111356/Documents/GitHub/BladeClash/DBBLClient/src/images/vegetavictory3.png</property>
+    <property name="ttl">1</property>
+    <property name="aspect_ratio">1</property>
+    <property name="progressive">1</property>
+    <property name="seekable">1</property>
+    <property name="format">2</property>
+    <property name="mlt_service">qimage</property>
+    <property name="shotcut:hash">f667085f0be9c75cbb1f1325648c891d</property>
+    <property name="creation_time">2023-05-09T16:16:29</property>
+    <property name="xml">was here</property>
+    <property name="shotcut:caption">vegetavictory3.png</property>
+    <property name="ignore_points">0</property>
+  </producer>
+  <producer id="producer12" in="00:00:00.000" out="03:59:59.960">
+    <property name="length">04:00:00.000</property>
+    <property name="eof">pause</property>
+    <property name="resource">C:/Users/111356/Documents/GitHub/BladeClash/DBBLClient/src/images/vegetavictory4.png</property>
+    <property name="ttl">1</property>
+    <property name="aspect_ratio">1</property>
+    <property name="progressive">1</property>
+    <property name="seekable">1</property>
+    <property name="format">2</property>
+    <property name="mlt_service">qimage</property>
+    <property name="shotcut:hash">ec15ffe0172631c9a7d43982eaa1e3b0</property>
+    <property name="creation_time">2023-05-09T16:16:36</property>
+    <property name="xml">was here</property>
+    <property name="shotcut:caption">vegetavictory4.png</property>
+    <property name="ignore_points">0</property>
+  </producer>
+  <producer id="producer13" in="00:00:00.000" out="03:59:59.960">
+    <property name="length">04:00:00.000</property>
+    <property name="eof">pause</property>
+    <property name="resource">C:/Users/111356/Documents/GitHub/BladeClash/DBBLClient/src/images/vegetavictory5.png</property>
+    <property name="ttl">1</property>
+    <property name="aspect_ratio">1</property>
+    <property name="progressive">1</property>
+    <property name="seekable">1</property>
+    <property name="format">2</property>
+    <property name="mlt_service">qimage</property>
+    <property name="shotcut:hash">54364c9c4667753bdd84ff38be234783</property>
+    <property name="creation_time">2023-05-09T16:16:46</property>
+    <property name="xml">was here</property>
+    <property name="shotcut:caption">vegetavictory5.png</property>
+    <property name="ignore_points">0</property>
+  </producer>
+  <producer id="producer14" in="00:00:00.000" out="03:59:59.960">
+    <property name="length">04:00:00.000</property>
+    <property name="eof">pause</property>
+    <property name="resource">C:/Users/111356/Documents/GitHub/BladeClash/DBBLClient/src/images/vegetavictory5.png</property>
+    <property name="ttl">1</property>
+    <property name="aspect_ratio">1</property>
+    <property name="progressive">1</property>
+    <property name="seekable">1</property>
+    <property name="format">2</property>
+    <property name="mlt_service">qimage</property>
+    <property name="shotcut:hash">54364c9c4667753bdd84ff38be234783</property>
+    <property name="creation_time">2023-05-09T16:16:46</property>
+    <property name="xml">was here</property>
+    <property name="shotcut:caption">vegetavictory5.png</property>
+    <property name="ignore_points">0</property>
+  </producer>
+  <producer id="producer15" in="00:00:00.000" out="03:59:59.960">
+    <property name="length">04:00:00.000</property>
+    <property name="eof">pause</property>
+    <property name="resource">C:/Users/111356/Documents/GitHub/BladeClash/DBBLClient/src/images/vegetavictory6.png</property>
+    <property name="ttl">1</property>
+    <property name="aspect_ratio">1</property>
+    <property name="progressive">1</property>
+    <property name="seekable">1</property>
+    <property name="format">2</property>
+    <property name="mlt_service">qimage</property>
+    <property name="shotcut:hash">01aca64b8dadba125b6c2318386f14fc</property>
+    <property name="creation_time">2023-05-09T16:16:53</property>
+    <property name="xml">was here</property>
+    <property name="shotcut:caption">vegetavictory6.png</property>
+    <property name="ignore_points">0</property>
+  </producer>
+  <producer id="producer16" in="00:00:00.000" out="03:59:59.960">
+    <property name="length">04:00:00.000</property>
+    <property name="eof">pause</property>
+    <property name="resource">C:/Users/111356/Documents/GitHub/BladeClash/DBBLClient/src/images/vegetavictory7.png</property>
+    <property name="ttl">1</property>
+    <property name="aspect_ratio">1</property>
+    <property name="progressive">1</property>
+    <property name="seekable">1</property>
+    <property name="format">2</property>
+    <property name="mlt_service">qimage</property>
+    <property name="shotcut:hash">f31ce77021c359f504a2fe934430e63d</property>
+    <property name="creation_time">2023-05-09T16:17:05</property>
+    <property name="xml">was here</property>
+    <property name="shotcut:caption">vegetavictory7.png</property>
+    <property name="ignore_points">0</property>
+  </producer>
+  <producer id="producer17" in="00:00:00.000" out="03:59:59.960">
+    <property name="length">04:00:00.000</property>
+    <property name="eof">pause</property>
+    <property name="resource">C:/Users/111356/Documents/GitHub/BladeClash/DBBLClient/src/images/vegetavictory8.png</property>
+    <property name="ttl">1</property>
+    <property name="aspect_ratio">1</property>
+    <property name="progressive">1</property>
+    <property name="seekable">1</property>
+    <property name="format">2</property>
+    <property name="mlt_service">qimage</property>
+    <property name="shotcut:hash">a33d2ea86a775c242eb7150ef025578f</property>
+    <property name="creation_time">2023-05-09T16:17:12</property>
+    <property name="xml">was here</property>
+    <property name="shotcut:caption">vegetavictory8.png</property>
+    <property name="ignore_points">0</property>
+  </producer>
+  <producer id="producer18" in="00:00:00.000" out="03:59:59.960">
+    <property name="length">04:00:00.000</property>
+    <property name="eof">pause</property>
+    <property name="resource">C:/Users/111356/Documents/GitHub/BladeClash/DBBLClient/src/images/vegetavictory6.png</property>
+    <property name="ttl">1</property>
+    <property name="aspect_ratio">1</property>
+    <property name="progressive">1</property>
+    <property name="seekable">1</property>
+    <property name="format">2</property>
+    <property name="mlt_service">qimage</property>
+    <property name="shotcut:hash">01aca64b8dadba125b6c2318386f14fc</property>
+    <property name="creation_time">2023-05-09T16:16:53</property>
+    <property name="xml">was here</property>
+    <property name="shotcut:caption">vegetavictory6.png</property>
+    <property name="ignore_points">0</property>
+  </producer>
+  <producer id="producer19" in="00:00:00.000" out="03:59:59.960">
+    <property name="length">04:00:00.000</property>
+    <property name="eof">pause</property>
+    <property name="resource">C:/Users/111356/Documents/GitHub/BladeClash/DBBLClient/src/images/vegetavictory7.png</property>
+    <property name="ttl">1</property>
+    <property name="aspect_ratio">1</property>
+    <property name="progressive">1</property>
+    <property name="seekable">1</property>
+    <property name="format">2</property>
+    <property name="mlt_service">qimage</property>
+    <property name="shotcut:hash">f31ce77021c359f504a2fe934430e63d</property>
+    <property name="creation_time">2023-05-09T16:17:05</property>
+    <property name="xml">was here</property>
+    <property name="shotcut:caption">vegetavictory7.png</property>
+    <property name="ignore_points">0</property>
+  </producer>
+  <producer id="producer20" in="00:00:00.000" out="03:59:59.960">
+    <property name="length">04:00:00.000</property>
+    <property name="eof">pause</property>
+    <property name="resource">C:/Users/111356/Documents/GitHub/BladeClash/DBBLClient/src/images/vegetavictory8.png</property>
+    <property name="ttl">1</property>
+    <property name="aspect_ratio">1</property>
+    <property name="progressive">1</property>
+    <property name="seekable">1</property>
+    <property name="format">2</property>
+    <property name="mlt_service">qimage</property>
+    <property name="shotcut:hash">a33d2ea86a775c242eb7150ef025578f</property>
+    <property name="creation_time">2023-05-09T16:17:12</property>
+    <property name="xml">was here</property>
+    <property name="shotcut:caption">vegetavictory8.png</property>
+    <property name="ignore_points">0</property>
+  </producer>
+  <playlist id="playlist0">
+    <property name="shotcut:video">1</property>
+    <property name="shotcut:name">V1</property>
+    <entry producer="producer9" in="00:00:00.800" out="00:00:00.840"/>
+    <entry producer="producer10" in="00:00:00.800" out="00:00:00.840"/>
+    <entry producer="producer11" in="00:00:00.000" out="00:00:00.040"/>
+    <entry producer="producer12" in="00:00:00.760" out="00:00:00.800"/>
+    <entry producer="producer13" in="00:00:00.720" out="00:00:00.760"/>
+    <entry producer="producer14" in="00:00:00.920" out="00:00:01.560"/>
+    <entry producer="producer15" in="00:00:00.800" out="00:00:00.840"/>
+    <entry producer="producer16" in="00:00:00.880" out="00:00:00.920"/>
+    <entry producer="producer17" in="00:00:00.760" out="00:00:01.560"/>
+    <entry producer="producer18" in="00:00:00.800" out="00:00:00.840"/>
+    <entry producer="producer19" in="00:00:00.880" out="00:00:00.920"/>
+    <entry producer="producer20" in="00:00:00.760" out="00:00:01.560"/>
+  </playlist>
+  <tractor id="tractor0" title="Shotcut version 23.05.07" in="00:00:00.000" out="00:00:03.040">
+    <property name="shotcut">1</property>
+    <property name="shotcut:projectAudioChannels">2</property>
+    <property name="shotcut:projectFolder">0</property>
+    <property name="shotcut:scaleFactor">11.5532</property>
+    <track producer="background"/>
+    <track producer="playlist0"/>
+    <transition id="transition0">
+      <property name="a_track">0</property>
+      <property name="b_track">1</property>
+      <property name="mlt_service">mix</property>
+      <property name="always_active">1</property>
+      <property name="sum">1</property>
+    </transition>
+    <transition id="transition1">
+      <property name="a_track">0</property>
+      <property name="b_track">1</property>
+      <property name="version">0.1</property>
+      <property name="mlt_service">frei0r.cairoblend</property>
+      <property name="threads">0</property>
+      <property name="disable">1</property>
+    </transition>
+  </tractor>
+</mlt>
