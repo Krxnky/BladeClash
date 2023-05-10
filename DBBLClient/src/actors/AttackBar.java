@@ -23,7 +23,7 @@ public class AttackBar extends Actor {
         this.barSpeed = barSpeed;
         this.onClick = onClick;
 
-        setImage(new GreenfootImage("attackBar.png"));
+        setImage(new GreenfootImage("attackbar.png"));
         getImage().setColor(Color.BLACK);
         getImage().drawRect(xOffset-1, yOffset-1, barWidth+1, barHeight+1);
         getImage().setColor(Color.GRAY);
