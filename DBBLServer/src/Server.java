@@ -1,9 +1,7 @@
-import enums.AttackType;
 import enums.GameState;
 import requests.AttackRequest;
 import requests.PlayerInfo;
 import responses.GameInfo;
-import responses.RoundResult;
 import responses.WaitingForAttack;
 
 import java.io.InputStream;
@@ -22,6 +20,7 @@ public class Server {
     private static PlayerInfo vegeta;
     private static ObjectOutputStream[] objectOutputStreams;
     private static ObjectInputStream[] objectInputStreams;
+
     public static void main(String[] args) throws Exception{
         
         Thread acceptThread = new Thread(new Acceptor());
@@ -30,7 +29,7 @@ public class Server {
         acceptThread.join();
         System.out.println("Starting Game...");
         Thread.sleep(1000);
-        game = new GameInfo(1, new PlayerInfo[]{goku, vegeta}, GameState.STARTING);
+        game = new GameInfo(1, new PlayerInfo[]{goku, vegeta}, GameState.STARTING, 0);
         System.out.println("Game started");
         OutputStream[] os = {gSock.getOutputStream(), vSock.getOutputStream()};
         objectOutputStreams = new ObjectOutputStream[]{new ObjectOutputStream(os[0]), new ObjectOutputStream(os[1])};
@@ -41,10 +40,11 @@ public class Server {
 
         while(goku.getHealth() > 0 && vegeta.getHealth() > 0){
             objectWriter(game);
-            WaitingForAttack waitingForAttack = new WaitingForAttack(5);
+            WaitingForAttack waitingForAttack = new WaitingForAttack(5 + (game.getRoundNumber() * 2));
             objectWriter(waitingForAttack);
+            game.setState(GameState.WAITING_FOR_ATTACKS);
 
-            System.out.println("roundResult sent to clients!!");
+//            System.out.println("roundResult sent to clients!!");
 
             Thread attackThread = new Thread(new AttackAcceptor());
             attackThread.start();
@@ -54,6 +54,7 @@ public class Server {
             System.out.println("Round Ended!");
 //        RoundResult roundResult = new RoundResult(game);
             System.out.println(game.getState());
+            game.setRoundNumber(game.getRoundNumber()+1);
         }
 
         while(true){}
@@ -109,6 +110,7 @@ public class Server {
                 game.setState(GameState.ATTACK_PROCESS_STARTED);
                 attacks = readAttack();
                 PlayerInfo winner = attacks[0].getAttackValue() > attacks[1].getAttackValue() ? goku: attacks[0].getAttackValue() < attacks[1].getAttackValue() ? vegeta: null;
+                game.setMostRecentWinner(winner);
                 if (winner.equals(goku)) {
                     vegeta.setHealth(vegeta.getHealth() - attacks[0].getAttackValue());
                 }
@@ -120,7 +122,6 @@ public class Server {
                 System.out.println(game.getPlayers()[0].getHealth());
                 System.out.println(game.getPlayers()[1].getHealth());
                 System.out.println(game.getState());
-                GameInfo update = new GameInfo(game.getGameId(), game.getPlayers(), game.getState());
 
                 objectWriter(game);
                 System.out.println("Updated players");

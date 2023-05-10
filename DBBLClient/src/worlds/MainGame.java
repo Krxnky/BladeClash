@@ -55,6 +55,7 @@ public class MainGame extends World  {
 
     public void waitingForAttack(int attackBarSpeed)
     {
+        createMessageOverlay("attackText.png", 3000);
         System.out.println("WAITING FOR ATTACK STARTED SPEED: " + attackBarSpeed);
         attackBar = new AttackBar(attackBarSpeed, (attackValue) -> {
             System.out.println("GOT ATTACK VALUE: " + attackValue);
@@ -81,17 +82,31 @@ public class MainGame extends World  {
         this.gameInfo = gameInfo;
 
         System.out.println(gameInfo.getState());
-        if(gameInfo.getState() == GameState.STARTING) startGame();
+        if(gameInfo.getState() == GameState.STARTING)
+        {
+            createMessageOverlay("gameStartingText.png", 2000);
+            startGame();
+        }
         else if(gameInfo.getState() == GameState.ROUND_ENDED)
         {
 
         }
         else if(gameInfo.getState() == GameState.GAME_OVER)
         {
-
+            createMessageOverlay("gameOverText.png", 2000);
         }
 
         updateUI();
+    }
+
+    public void createMessageOverlay(String image, int duration)
+    {
+        addObject(new MessageOverlay(new GreenfootImage(image), duration), 0, 0);
+        try {
+            Thread.sleep(duration);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     private void updateUI()
@@ -110,7 +125,7 @@ public class MainGame extends World  {
     public void buildUI()
     {
         // UI TESTING
-
+        //addObject(new MessageOverlay(new GreenfootImage("attackText.png"), 300), 0, 0);
         // Create Healthbar UI actors
         playerHealthBar = new HealthBar(1000, false);
         enemyHealthBar = new HealthBar(1000, true);

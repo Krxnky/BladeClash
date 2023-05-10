@@ -10,14 +10,24 @@ public class GameInfo implements Serializable {
     private int GameId;
     private PlayerInfo[] Players;
     private GameState State;
+    private int RoundNumber;
 
     private PlayerInfo mostRecentWinner;
 
-    public GameInfo(int GameId, PlayerInfo[] Players, GameState State)
+    public GameInfo(int GameId, PlayerInfo[] Players, GameState State, int RoundNumber)
     {
         this.GameId = GameId;
         this.Players = Players;
         this.State = State;
+        this.RoundNumber = RoundNumber;
+    }
+
+    public int getRoundNumber() {
+        return RoundNumber;
+    }
+
+    public void setRoundNumber(int roundNumber) {
+        RoundNumber = roundNumber;
     }
 
     public int getGameId() {
