@@ -1,10 +1,8 @@
 package classes;
 
 import enums.GameState;
-import greenfoot.Actor;
 import requests.PlayerInfo;
 import responses.GameInfo;
-import responses.RoundResult;
 import responses.WaitingForAttack;
 import worlds.MainGame;
 
@@ -25,6 +23,7 @@ public class NetworkHandler implements Runnable {
 
     private Thread listenThread;
     private Thread talkThread;
+    private GameInfo game;
 
     public NetworkHandler(MainGame mainGame)
     {
@@ -63,7 +62,9 @@ public class NetworkHandler implements Runnable {
 
         @Override
         public void run() {
+//
             try {
+//                System.out.println(game.getState());
                 while(!socket.isClosed())
                 {
                     Object obj = objectInputStream.readObject();
@@ -74,6 +75,15 @@ public class NetworkHandler implements Runnable {
                         GameInfo gameInfo = (GameInfo) obj;
                         mainGame.setGameInfo(gameInfo);
 
+                        game = gameInfo; // to get state
+                        if(gameInfo.getState() == GameState.ROUND_ENDED) {
+                            try {
+                                mainGame.pauseSequence();
+                                System.out.println("Pausing....");
+                            } catch (Exception e){
+                                e.printStackTrace();
+                            }
+                        }
                         System.out.println(gameInfo.getPlayers()[0].getHealth());
                         System.out.println(gameInfo.getPlayers()[1].getHealth());
                     }
@@ -86,8 +96,24 @@ public class NetworkHandler implements Runnable {
                     {
                         WaitingForAttack waitingForAttack = (WaitingForAttack) obj;
                         mainGame.waitingForAttack(waitingForAttack.getAttackBarSpeed());
+                        mainGame.getEnemyCharacter().animatePunch();
+                        mainGame.getPlayerCharacter().animatePunch();
                     }
                 }
+                //ANIMATE
+//                switch (game.getState()){
+//                    case WAITING_FOR_ATTACKS:
+//                        mainGame.getEnemyCharacter().animatePunch();
+//                    case ROUND_ENDED:
+//                        try {
+//                            mainGame.pauseSequence();
+//                        } catch (Exception e) {
+//                            e.printStackTrace();
+//                        }
+//                        System.out.println("going idle...");
+//                    default: break;
+//                }
+
             } catch (IOException e) {
                 e.printStackTrace();
             } catch (ClassNotFoundException e) {
