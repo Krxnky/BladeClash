@@ -17,10 +17,13 @@ public class Vegeta extends Actor {
         GreenfootImage cImg = new GreenfootImage("vegetasprite.png");
         setImage(cImg);
         for(int i = 1; i <= 6; i++) {
-            punchFrames.add(new GreenfootImage("punchframe" + i + ".png"));
+            GreenfootImage temp = new GreenfootImage("punchframe" + i + ".png");
+            punchFrames.add(temp);
         }
         for(int i = 1; i <= 2; i++) {
-            idleFrames.add(new GreenfootImage("vegetaidle" + i + ".png"));
+            GreenfootImage temp = new GreenfootImage("vegetaidle" + i + ".png");
+            idleFrames.add(temp);
+
         }
     }
     public void animate(Queue<GreenfootImage> frames){

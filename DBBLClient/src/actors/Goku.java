@@ -20,11 +20,13 @@ public class Goku extends Actor {
         for(int i = 1; i <= 6; i++) {
             GreenfootImage temp = new GreenfootImage("gokupunch" + i + ".png");
             temp.mirrorHorizontally();
+            getImage().scale(temp.getWidth()*2, temp.getHeight()*2);
             punchFrames.add(temp);
         }
         for(int i = 1; i <= 2; i++) {
             GreenfootImage temp = new GreenfootImage("gokuidle" + i + ".png");
             temp.mirrorHorizontally();
+            getImage().scale(temp.getWidth()*2, temp.getHeight()*2);
             idleFrames.add(new GreenfootImage(temp));
         }
     }
