@@ -68,6 +68,14 @@ public class MainGame extends World  {
         addObject(attackBar, 1000/2, 600/2);
     }
 
+    public void pauseSequence() throws Exception{
+        enemyCharacter.deAnimatePunch();
+        playerCharacter.deAnimatePunch();
+//        enemyCharacter.setIdle();
+        Thread.sleep(3000);
+        System.out.println("Going idle....");
+    }
+
     public void setGameInfo(GameInfo gameInfo)
     {
         this.gameInfo = gameInfo;
@@ -102,7 +110,6 @@ public class MainGame extends World  {
     public void buildUI()
     {
         // UI TESTING
-        //addObject(new AttackBar(5, (t) -> {}), 600, 400);
 
         // Create Healthbar UI actors
         playerHealthBar = new HealthBar(1000, false);
@@ -118,5 +125,13 @@ public class MainGame extends World  {
         addObject(playerCharacter, 100, (getHeight() - playerCharacter.getImage().getHeight()));
         addObject(enemyCharacter, getWidth() - enemyCharacter.getImage().getWidth(), (getHeight() - enemyCharacter.getImage().getHeight()));
 
+    }
+
+    public Vegeta getEnemyCharacter() {
+        return enemyCharacter;
+    }
+
+    public Goku getPlayerCharacter() {
+        return playerCharacter;
     }
 }
