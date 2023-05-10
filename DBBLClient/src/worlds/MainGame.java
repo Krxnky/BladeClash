@@ -2,7 +2,6 @@ package worlds;
 
 import actors.*;
 import classes.NetworkHandler;
-import com.sun.javafx.iio.gif.GIFImageLoader2;
 import enums.AttackType;
 import enums.GameState;
 import greenfoot.Color;
@@ -77,6 +76,14 @@ public class MainGame extends World  {
         System.out.println(getWidth());
         System.out.println(getHeight());
         addObject(attackBar, 500, 550);
+    }
+
+    public void pauseSequence() throws Exception{
+        enemyCharacter.deAnimatePunch();
+        playerCharacter.deAnimatePunch();
+//        enemyCharacter.setIdle();
+        Thread.sleep(3000);
+        System.out.println("Going idle....");
     }
 
     public void pauseSequence() throws Exception{
