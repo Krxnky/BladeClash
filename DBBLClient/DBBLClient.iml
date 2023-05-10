@@ -7,8 +7,8 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="Greenfoot" level="application" />
     <orderEntry type="library" name="lib" level="application" />
-    <orderEntry type="module" module-name="DBBLProtocol" />
+    <orderEntry type="module" module-name="DBBLProtocol" exported="" />
+    <orderEntry type="library" exported="" name="Greenfoot" level="project" />
   </component>
 </module>
