@@ -9,9 +9,12 @@ import java.util.Queue;
 public class Vegeta extends Actor {
     Queue<GreenfootImage> punchFrames = new LinkedList<GreenfootImage>();
     Queue<GreenfootImage> idleFrames = new LinkedList<GreenfootImage>();
-    int counter = 0;
+    Queue<GreenfootImage> victoryFrames = new LinkedList<GreenfootImage>();
+    private static int counter = 0;
     private static boolean punchActive;
     private static boolean idle;
+    private static boolean victoryAnimation;
+    private static int playerID = 2;
     public Vegeta()
     {
         GreenfootImage cImg = new GreenfootImage("vegetasprite.png");
@@ -23,7 +26,6 @@ public class Vegeta extends Actor {
         for(int i = 1; i <= 2; i++) {
             GreenfootImage temp = new GreenfootImage("vegetaidle" + i + ".png");
             idleFrames.add(temp);
-
         }
     }
     public void animate(Queue<GreenfootImage> frames){
@@ -36,6 +38,31 @@ public class Vegeta extends Actor {
     public void deAnimatePunch(){
         punchActive = false;
         idle = true;
+    }
+    public void buildVictoryFrames(){
+        if(victoryFrames.isEmpty()) {
+            for (int i = 1; i <= 9; i++) {
+                GreenfootImage temp = new GreenfootImage("vegetavictory" + i + ".png");
+                idleFrames.add(temp);
+            }
+        }
+    }
+
+    public void animateVictory(){
+        idle = false;
+        punchActive = false;
+        victoryAnimation = true;
+    }
+    public void deAnimateVictory(){
+        victoryAnimation = false;
+        idle = true;
+    }
+    public void nextVictoryFrame(){
+        if(counter % 15 == 0){
+            victoryFrames.add(victoryFrames.poll());
+            GreenfootImage temp = victoryFrames.peek();
+            System.out.println("Vegeta Victory Frame/n Height: " + temp.getHeight() + "\n Width: "+ temp.getWidth());
+        }
     }
     public void nextPunchFrame(){
         if (counter > 175 && counter % 5 == 0) {
@@ -55,7 +82,13 @@ public class Vegeta extends Actor {
         }
 
     }
+    public static void counterReset(){
+        counter = 0;
+    }
+
     public void setIdle(){
+        punchActive =false;
+        victoryAnimation = false;
         idle = true;
     }
 
@@ -70,6 +103,12 @@ public class Vegeta extends Actor {
         else if(punchActive) {
             animate(punchFrames);
             nextPunchFrame();
+        }
+        else if(victoryAnimation){
+            buildVictoryFrames();
+//            counterReset();
+            animate(victoryFrames);
+            nextVictoryFrame();
         }
     }
 }

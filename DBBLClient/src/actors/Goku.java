@@ -9,9 +9,12 @@ import java.util.Queue;
 public class Goku extends Actor {
     Queue<GreenfootImage> punchFrames = new LinkedList<GreenfootImage>();
     Queue<GreenfootImage> idleFrames = new LinkedList<GreenfootImage>();
-    int counter = 0;
+    Queue<GreenfootImage> victoryFrames = new LinkedList<GreenfootImage>();
+    private static int counter = 0;
     private static boolean punchActive;
     private static boolean idle;
+    private static boolean victoryAnimation;
+    private static int playerID = 1;
     public Goku()
     {
         GreenfootImage cImg = new GreenfootImage("gokusprite.png");
@@ -43,6 +46,29 @@ public class Goku extends Actor {
         punchActive = false;
         idle = true;
     }
+    public void buildVictoryFrames(){
+        if(victoryFrames.isEmpty()) {
+            for (int i = 1; i <= 13; i++) {
+                GreenfootImage temp = new GreenfootImage("gokuvictory" + i + ".png");
+                temp.mirrorHorizontally();
+                idleFrames.add(temp);
+            }
+        }
+    }
+    public void animateVictory(){
+        idle = false;
+        victoryAnimation = true;
+    }
+    public void deAnimateVictory(){
+        victoryAnimation = false;
+        idle = true;
+    }
+    public void nextVictoryFrame(){
+        if(counter % 15 == 0){
+            victoryFrames.add(victoryFrames.poll());
+            System.out.println("Goku Victory Frame");
+        }
+    }
     public void nextPunchFrame(){
         if (counter > 175 && counter % 5 == 0) {
             punchFrames.add(punchFrames.poll());
@@ -61,10 +87,16 @@ public class Goku extends Actor {
         }
 
     }
+    public static void counterReset(){
+        counter = 0;
+    }
     public void setIdle(){
+        punchActive =false;
+        victoryAnimation = false;
         idle = true;
     }
-
+    public void animationResolver(){
+    }
     @Override
     public void act() {
         counter++;
@@ -76,6 +108,12 @@ public class Goku extends Actor {
         else if(punchActive) {
             animate(punchFrames);
             nextPunchFrame();
+        }
+        else if(victoryAnimation){
+            buildVictoryFrames();
+//            counterReset();
+            animate(victoryFrames);
+            nextVictoryFrame();
         }
     }
 }

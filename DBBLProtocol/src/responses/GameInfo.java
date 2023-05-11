@@ -13,6 +13,7 @@ public class GameInfo implements Serializable {
     private int RoundNumber;
 
     private PlayerInfo mostRecentWinner;
+    private PlayerInfo gameWinner;
 
     public GameInfo(int GameId, PlayerInfo[] Players, GameState State, int RoundNumber)
     {
@@ -55,5 +56,13 @@ public class GameInfo implements Serializable {
 
     public PlayerInfo getMostRecentWinner() {
         return mostRecentWinner;
+    }
+
+    public PlayerInfo getGameWinner() {
+        return gameWinner;
+    }
+
+    public void setGameWinner(PlayerInfo gameWinner) {
+        this.gameWinner = gameWinner;
     }
 }

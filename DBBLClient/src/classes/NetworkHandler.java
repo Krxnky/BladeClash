@@ -84,6 +84,17 @@ public class NetworkHandler implements Runnable {
                                 e.printStackTrace();
                             }
                         }
+
+                        if (gameInfo.getState() == GameState.GAME_OVER){
+                            if(gameInfo.getMostRecentWinner().getPlayerId() == 1){
+                                mainGame.getPlayerCharacter().animateVictory();
+                                mainGame.getEnemyCharacter().setIdle();
+                            }
+                            else{
+                                mainGame.getEnemyCharacter().animateVictory();
+                                mainGame.getPlayerCharacter().setIdle();
+                            }
+                        }
                         System.out.println(gameInfo.getPlayers()[0].getHealth());
                         System.out.println(gameInfo.getPlayers()[1].getHealth());
                     }
