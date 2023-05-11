@@ -55,7 +55,7 @@ public class MainGame extends World  {
 
     public void waitingForAttack(int attackBarSpeed)
     {
-        createMessageOverlay("attackText.png", 3000);
+        createMessageOverlay("attackText.png", 2000);
         System.out.println("WAITING FOR ATTACK STARTED SPEED: " + attackBarSpeed);
         attackBar = new AttackBar(attackBarSpeed, (attackValue) -> {
             System.out.println("GOT ATTACK VALUE: " + attackValue);

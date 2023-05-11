@@ -57,6 +57,9 @@ public class Server {
             game.setRoundNumber(game.getRoundNumber()+1);
         }
 
+        game.setState(GameState.GAME_OVER);
+        objectWriter(game);
+
         while(true){}
     }
     public static void objectWriter(Object object) throws Exception{
