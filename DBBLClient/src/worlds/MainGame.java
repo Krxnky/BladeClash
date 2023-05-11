@@ -5,6 +5,7 @@ import classes.NetworkHandler;
 import com.sun.javafx.iio.gif.GIFImageLoader2;
 import enums.AttackType;
 import enums.GameState;
+import greenfoot.Color;
 import greenfoot.GreenfootImage;
 import greenfoot.GreenfootSound;
 import greenfoot.World;
@@ -26,15 +27,18 @@ public class MainGame extends World  {
     Vegeta enemyCharacter;
 
     // NETWORK
+    String serverIp;
     NetworkHandler networkHandler;
     PlayerInfo localPlayerInfo;
     GameInfo gameInfo;
 
     GreenfootSound backgroundMusic = new GreenfootSound("main_menu_music.mp3");
 
-    public MainGame()
+    public MainGame(String serverIp)
     {
         super(1000, 600, 1, false);
+
+        this.serverIp = serverIp;
 
         GreenfootImage bg = new GreenfootImage("MV5BMWM3MmY2YWEtNjVmZi00NmZlLTliN2EtYTc0YzhhOTQ3MzE2XkEyXkFqcGdeQXVyNzgxMzc3OTc@._V1_.png");
         bg.scale(1000, 600);
@@ -49,7 +53,7 @@ public class MainGame extends World  {
 
     public void connectToServer()
     {
-        networkHandler = new NetworkHandler(this);
+        networkHandler = new NetworkHandler(serverIp, this);
         new Thread(networkHandler).start();
     }
 
@@ -119,7 +123,7 @@ public class MainGame extends World  {
     {
 
         System.out.println("UI PLAYER HEALTH: " + Arrays.stream(gameInfo.getPlayers()).filter(x -> x.getPlayerId() == localPlayerInfo.getPlayerId()).toArray(PlayerInfo[]::new)[0].getHealth());
-        System.out.println("UI ENEMNY HEALTH: " + Arrays.stream(gameInfo.getPlayers()).filter(x -> x.getPlayerId() != localPlayerInfo.getPlayerId()).toArray(PlayerInfo[]::new)[0].getHealth());
+        System.out.println("UI ENEMY HEALTH: " + Arrays.stream(gameInfo.getPlayers()).filter(x -> x.getPlayerId() != localPlayerInfo.getPlayerId()).toArray(PlayerInfo[]::new)[0].getHealth());
         playerHealthBar.setHealth(Arrays.stream(gameInfo.getPlayers()).filter(x -> x.getPlayerId() == localPlayerInfo.getPlayerId()).toArray(PlayerInfo[]::new)[0].getHealth());
         enemyHealthBar.setHealth(Arrays.stream(gameInfo.getPlayers()).filter(x -> x.getPlayerId() != localPlayerInfo.getPlayerId()).toArray(PlayerInfo[]::new)[0].getHealth());
     }
