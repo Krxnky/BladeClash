@@ -1,11 +1,9 @@
 package worlds;
 
-import greenfoot.Color;
-import greenfoot.Greenfoot;
-import greenfoot.GreenfootImage;
-import greenfoot.World;
+import greenfoot.*;
 
 public class TitleScreen extends World {
+    private GreenfootSound backgroundMusic = new GreenfootSound("main_menu_music.mp3");
     public TitleScreen()
     {
         super(1000, 600, 1, false);
@@ -16,10 +14,16 @@ public class TitleScreen extends World {
         getBackground().drawImage(logo, (getWidth()/2) - (logo.getWidth()/2), 25);
         getBackground().drawImage(text, (getWidth()/2) - (text.getWidth()/2), 400);
 
+        backgroundMusic.setVolume(50);
+        backgroundMusic.playLoop();
     }
 
     @Override
     public void act() {
-        if(Greenfoot.isKeyDown("SPACE")) Greenfoot.setWorld(new MainGame());
+        if(Greenfoot.isKeyDown("SPACE"))
+        {
+            backgroundMusic.stop();
+            Greenfoot.setWorld(new MainGame());
+        }
     }
 }

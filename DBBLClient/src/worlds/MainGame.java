@@ -6,6 +6,7 @@ import com.sun.javafx.iio.gif.GIFImageLoader2;
 import enums.AttackType;
 import enums.GameState;
 import greenfoot.GreenfootImage;
+import greenfoot.GreenfootSound;
 import greenfoot.World;
 import requests.AttackRequest;
 import requests.PlayerInfo;
@@ -29,6 +30,8 @@ public class MainGame extends World  {
     PlayerInfo localPlayerInfo;
     GameInfo gameInfo;
 
+    GreenfootSound backgroundMusic = new GreenfootSound("main_menu_music.mp3");
+
     public MainGame()
     {
         super(1000, 600, 1, false);
@@ -39,6 +42,9 @@ public class MainGame extends World  {
 
         buildUI();
         connectToServer();
+
+        backgroundMusic.play();
+        backgroundMusic.setVolume(25);
     }
 
     public void connectToServer()
