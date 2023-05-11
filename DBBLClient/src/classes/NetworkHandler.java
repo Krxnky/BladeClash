@@ -25,8 +25,9 @@ public class NetworkHandler implements Runnable {
     private Thread talkThread;
     private GameInfo game;
 
-    public NetworkHandler(MainGame mainGame)
+    public NetworkHandler(String serverIp, MainGame mainGame)
     {
+        this.serverIp = serverIp;
         this.mainGame = mainGame;
     }
 
@@ -45,7 +46,13 @@ public class NetworkHandler implements Runnable {
             listenThread.start();
             talkThread.start();
         } catch (IOException e) {
-            e.printStackTrace();
+            System.out.println("ERROR: SERVER REFUSED TO CONNECT, RETRYING IN 5 SECONDS...");
+            try {
+                Thread.sleep(5000);
+            } catch (InterruptedException interruptedException) {
+                interruptedException.printStackTrace();
+            }
+            run();
         }
     }
 
