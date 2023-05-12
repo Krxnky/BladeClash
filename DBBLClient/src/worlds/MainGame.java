@@ -76,7 +76,7 @@ public class MainGame extends World  {
         System.out.println(attackBar.getImage().getHeight());
         System.out.println(getWidth());
         System.out.println(getHeight());
-        addObject(attackBar, 1000/2, 600/2);
+        addObject(attackBar, 500, 550);
     }
 
     public void pauseSequence() throws Exception{
@@ -139,6 +139,7 @@ public class MainGame extends World  {
     {
         // UI TESTING
         //addObject(new MessageOverlay(new GreenfootImage("attackText.png"), 300), 0, 0);
+        //addObject(new AttackBar(3, (t) -> {}), 500, 550);
         // Create Healthbar UI actors
         playerHealthBar = new HealthBar(1000, false);
         enemyHealthBar = new HealthBar(1000, true);

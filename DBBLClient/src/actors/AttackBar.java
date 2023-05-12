@@ -28,7 +28,8 @@ public class AttackBar extends Actor {
         getImage().drawRect(xOffset-1, yOffset-1, barWidth+1, barHeight+1);
         getImage().setColor(Color.GRAY);
         getImage().fillRect(xOffset, yOffset, barWidth, barHeight);
-        setRotation(180);
+
+        setRotation(-90);
     }
 
     private void updateBar()
@@ -41,6 +42,16 @@ public class AttackBar extends Actor {
 
         getImage().setColor(new Color(255, 135, 0));
         getImage().fillRect(xOffset, yOffset, barWidth, attackValue);
+
+        GreenfootImage valueText = new GreenfootImage(Integer.toString(attackValue), 20, Color.WHITE, null);
+        GreenfootImage valueTextShadow = new GreenfootImage(Integer.toString(attackValue), 20, new Color(0, 0, 0), null);
+
+        valueTextShadow.rotate(90);
+        valueText.rotate(90);
+
+        getImage().drawImage(valueTextShadow, (getImage().getWidth()/2) - (valueTextShadow.getWidth()/2)-1, 16);
+        getImage().drawImage(valueText, (getImage().getWidth()/2) - (valueText.getWidth()/2), 15);
+
     }
 
     public void act()
@@ -54,10 +65,13 @@ public class AttackBar extends Actor {
                 e.printStackTrace();
             }
             getWorld().removeObject(this);
-        };
-        for(int i=0; i<barSpeed; i++)
+        }
+        else
         {
-            updateBar();
+            for(int i=0; i<barSpeed; i++)
+            {
+                updateBar();
+            }
         }
     }
 }
