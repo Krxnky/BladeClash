@@ -32,7 +32,7 @@ public class MainGame extends World  {
     PlayerInfo localPlayerInfo;
     GameInfo gameInfo;
 
-    GreenfootSound backgroundMusic = new GreenfootSound("main_menu_music.mp3");
+    GreenfootSound backgroundMusic = new GreenfootSound("battle_bg_music.mp3");
 
     public MainGame(String serverIp)
     {
@@ -103,6 +103,8 @@ public class MainGame extends World  {
         }
         else if(gameInfo.getState() == GameState.GAME_OVER)
         {
+            if(gameInfo.getRecentWinner().equals(localPlayerInfo)) createMessageOverlay("victoryText.png", 2000);
+            else createMessageOverlay("defeatText.png", 2000);
             createMessageOverlay("gameOverText.png", 2000);
         }
 
@@ -124,6 +126,7 @@ public class MainGame extends World  {
 
         System.out.println("UI PLAYER HEALTH: " + Arrays.stream(gameInfo.getPlayers()).filter(x -> x.getPlayerId() == localPlayerInfo.getPlayerId()).toArray(PlayerInfo[]::new)[0].getHealth());
         System.out.println("UI ENEMY HEALTH: " + Arrays.stream(gameInfo.getPlayers()).filter(x -> x.getPlayerId() != localPlayerInfo.getPlayerId()).toArray(PlayerInfo[]::new)[0].getHealth());
+
         playerHealthBar.setHealth(Arrays.stream(gameInfo.getPlayers()).filter(x -> x.getPlayerId() == localPlayerInfo.getPlayerId()).toArray(PlayerInfo[]::new)[0].getHealth());
         enemyHealthBar.setHealth(Arrays.stream(gameInfo.getPlayers()).filter(x -> x.getPlayerId() != localPlayerInfo.getPlayerId()).toArray(PlayerInfo[]::new)[0].getHealth());
     }

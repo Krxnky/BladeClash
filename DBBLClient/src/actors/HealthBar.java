@@ -39,6 +39,9 @@ public class HealthBar extends Actor {
         getImage().drawImage(healthTextShadow, (isEnemy) ? getImage().getWidth() - healthTextShadow.getWidth() - 5 : 5, 22);
         getImage().drawImage(healthText, (isEnemy) ? getImage().getWidth() - healthText.getWidth() - 5: 5, 20);
 
+        GreenfootImage playerText = new GreenfootImage(String.format("%,.0f", (double)health), 15, Color.WHITE, null);
+        GreenfootImage playerTextShadow = new GreenfootImage(String.format("%,.0f", (double)health), 15, new Color(0, 0, 0), null);
+
 
     }
 }
