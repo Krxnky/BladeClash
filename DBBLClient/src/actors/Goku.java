@@ -38,6 +38,17 @@ public class Goku extends Actor {
         setImage(frames.peek());
 
     }
+    public void moveInto(){
+        try {
+            while (getX() < 450) {
+                Thread.sleep(100/30);
+                setLocation(getX() + 5, getY());
+                System.out.println("moving right");
+            }
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+    }
     public void animatePunch(){
         idle = false;
         punchActive = true;
@@ -57,6 +68,7 @@ public class Goku extends Actor {
     }
     public void animateVictory(){
         idle = false;
+        punchActive = false;
         victoryAnimation = true;
     }
     public void deAnimateVictory(){
