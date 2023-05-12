@@ -48,6 +48,11 @@ public class AttackBar extends Actor {
         if(Greenfoot.mouseClicked(null))
         {
             onClick.accept(attackValue/2);
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
             getWorld().removeObject(this);
         };
         for(int i=0; i<barSpeed; i++)
