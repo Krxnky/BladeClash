@@ -51,7 +51,7 @@ public class Goku extends Actor {
             for (int i = 1; i <= 13; i++) {
                 GreenfootImage temp = new GreenfootImage("gokuvictory" + i + ".png");
                 temp.mirrorHorizontally();
-                idleFrames.add(temp);
+                victoryFrames.add(temp);
             }
         }
     }

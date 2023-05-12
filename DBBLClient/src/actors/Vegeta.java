@@ -43,7 +43,7 @@ public class Vegeta extends Actor {
         if(victoryFrames.isEmpty()) {
             for (int i = 1; i <= 9; i++) {
                 GreenfootImage temp = new GreenfootImage("vegetavictory" + i + ".png");
-                idleFrames.add(temp);
+                victoryFrames.add(temp);
             }
         }
     }
