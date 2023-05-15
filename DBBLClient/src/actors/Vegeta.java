@@ -15,10 +15,12 @@ public class Vegeta extends Actor {
     private static boolean idle;
     private static boolean victoryAnimation;
     private static int playerID = 2;
+
     public Vegeta()
     {
-        GreenfootImage cImg = new GreenfootImage("vegetasprite.png");
-        setImage(cImg);
+//        GreenfootImage cImg = new GreenfootImage("vegetasprite.png");
+//        setImage(cImg);
+        setIdle();
         for(int i = 1; i <= 6; i++) {
             GreenfootImage temp = new GreenfootImage("punchframe" + i + ".png");
             punchFrames.add(temp);
@@ -31,10 +33,34 @@ public class Vegeta extends Actor {
     public void animate(Queue<GreenfootImage> frames){
         setImage(frames.peek());
     }
+    public void moveInto(){
+        try {
+            while (getX() > 550) {
+
+                Thread.sleep(100/30);
+                setLocation(getX() - 5, getY());
+//                System.out.println("moving left");
+            }
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+    public void moveBack(){
+        while (getX() < 875){
+            try {
+                Thread.sleep(100 / 30);
+                setLocation(getX() + 5, getY());
+//                System.out.println("vegeta moving ");
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
     public void animatePunch(){
         idle = false;
         punchActive = true;
     }
+
     public void deAnimatePunch(){
         punchActive = false;
         idle = true;

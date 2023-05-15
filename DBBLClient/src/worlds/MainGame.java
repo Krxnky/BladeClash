@@ -65,6 +65,7 @@ public class MainGame extends World  {
     public void waitingForAttack(int attackBarSpeed)
     {
         createMessageOverlay("attackText.png", 2000);
+        movePlayersInto();
         System.out.println("WAITING FOR ATTACK STARTED SPEED: " + attackBarSpeed);
         attackBar = new AttackBar(attackBarSpeed, (attackValue) -> {
             System.out.println("GOT ATTACK VALUE: " + attackValue);
@@ -76,14 +77,6 @@ public class MainGame extends World  {
         System.out.println(getWidth());
         System.out.println(getHeight());
         addObject(attackBar, 500, 550);
-    }
-
-    public void pauseSequence() throws Exception{
-        enemyCharacter.deAnimatePunch();
-        playerCharacter.deAnimatePunch();
-//        enemyCharacter.setIdle();
-        Thread.sleep(3000);
-        System.out.println("Going idle....");
     }
 
     public void pauseSequence() throws Exception{
@@ -158,11 +151,20 @@ public class MainGame extends World  {
         playerCharacter = new Goku();
         enemyCharacter = new Vegeta();
 
-        addObject(playerCharacter, 100, (getHeight() - playerCharacter.getImage().getHeight()));
-        addObject(enemyCharacter, getWidth() - enemyCharacter.getImage().getWidth(), (getHeight() - enemyCharacter.getImage().getHeight()));
+//        addObject(playerCharacter, 100, (getHeight() - playerCharacter.getImage().getHeight()));
+//        addObject(enemyCharacter, getWidth() - enemyCharacter.getImage().getWidth(), (getHeight() - enemyCharacter.getImage().getHeight()));
+        addObject(playerCharacter, 100, 350);
+        addObject(enemyCharacter, 875, 350);
+    }
+    public void movePlayersBack(){
+        playerCharacter.moveBack();
+        enemyCharacter.moveBack();
 
     }
-
+    public void movePlayersInto(){
+        playerCharacter.moveInto();
+        enemyCharacter.moveInto();
+    }
     public Vegeta getEnemyCharacter() {
         return enemyCharacter;
     }

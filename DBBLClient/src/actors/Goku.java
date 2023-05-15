@@ -15,11 +15,13 @@ public class Goku extends Actor {
     private static boolean idle;
     private static boolean victoryAnimation;
     private static int playerID = 1;
+    private static int vicInc = 0;
     public Goku()
     {
-        GreenfootImage cImg = new GreenfootImage("gokusprite.png");
-        cImg.mirrorHorizontally();
-        setImage(cImg);
+//        GreenfootImage cImg = new GreenfootImage("gokusprite.png");
+//        cImg.mirrorHorizontally();
+//        setImage(cImg);
+        setIdle();
         for(int i = 1; i <= 6; i++) {
             GreenfootImage temp = new GreenfootImage("gokupunch" + i + ".png");
             temp.mirrorHorizontally();
@@ -33,6 +35,7 @@ public class Goku extends Actor {
             idleFrames.add(new GreenfootImage(temp));
         }
     }
+
     public void animate(Queue<GreenfootImage> frames){
 
         setImage(frames.peek());
@@ -47,6 +50,17 @@ public class Goku extends Actor {
             }
         } catch (Exception e){
             e.printStackTrace();
+        }
+    }
+    public void moveBack(){
+        while (getX()>100){
+            try {
+                Thread.sleep(100 / 30);
+                setLocation(getX() - 5, getY());
+//                System.out.println("vegeta moving ");
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
     }
     public void animatePunch(){
@@ -76,8 +90,9 @@ public class Goku extends Actor {
         idle = true;
     }
     public void nextVictoryFrame(){
-        if(counter % 15 == 0){
-            victoryFrames.add(victoryFrames.poll());
+        if(counter % 10 == 0){
+            vicInc++;
+            victoryFrames.poll();
             System.out.println("Goku Victory Frame");
         }
     }
@@ -125,7 +140,7 @@ public class Goku extends Actor {
             buildVictoryFrames();
 //            counterReset();
             animate(victoryFrames);
-            nextVictoryFrame();
+            if(vicInc < 12) nextVictoryFrame();
         }
     }
 }

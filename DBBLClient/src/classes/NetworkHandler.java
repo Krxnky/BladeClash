@@ -85,6 +85,7 @@ public class NetworkHandler implements Runnable {
                         game = gameInfo; // to get state
                         if(gameInfo.getState() == GameState.ROUND_ENDED) {
                             try {
+                                mainGame.movePlayersBack();
                                 mainGame.pauseSequence();
                                 System.out.println("Pausing....");
                             } catch (Exception e){
@@ -93,6 +94,7 @@ public class NetworkHandler implements Runnable {
                         }
 
                         if (gameInfo.getState() == GameState.GAME_OVER){
+                            mainGame.movePlayersBack();
                             if(gameInfo.getMostRecentWinner().getPlayerId() == 1){
                                 mainGame.getPlayerCharacter().animateVictory();
                                 mainGame.getEnemyCharacter().setIdle();
