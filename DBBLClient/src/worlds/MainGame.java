@@ -2,6 +2,7 @@ package worlds;
 
 import actors.*;
 import classes.NetworkHandler;
+import classes.SoundEffectHandler;
 import enums.AttackType;
 import enums.GameState;
 import greenfoot.Color;
@@ -96,10 +97,12 @@ public class MainGame extends World  {
         {
             createMessageOverlay("gameStartingText.png", 2000);
             startGame();
+            SoundEffectHandler.GameStarted.play();
         }
         else if(gameInfo.getState() == GameState.ROUND_ENDED)
         {
-
+            if(gameInfo.getRecentWinner().getPlayerId() == localPlayerInfo.getPlayerId()) SoundEffectHandler.SimpleBattle_Win.play();
+            else SoundEffectHandler.SimpleBattle_Lose.play();
         }
         else if(gameInfo.getState() == GameState.GAME_OVER)
         {
