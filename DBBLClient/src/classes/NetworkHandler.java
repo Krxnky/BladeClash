@@ -80,7 +80,6 @@ public class NetworkHandler implements Runnable {
                     if(obj instanceof GameInfo)
                     {
                         GameInfo gameInfo = (GameInfo) obj;
-                        mainGame.setGameInfo(gameInfo);
 
                         game = gameInfo; // to get state
                         if(gameInfo.getState() == GameState.ROUND_ENDED) {
@@ -104,6 +103,7 @@ public class NetworkHandler implements Runnable {
                                 mainGame.getPlayerCharacter().setIdle();
                             }
                         }
+                        mainGame.setGameInfo(gameInfo);
                         System.out.println(gameInfo.getPlayers()[0].getHealth());
                         System.out.println(gameInfo.getPlayers()[1].getHealth());
                     }

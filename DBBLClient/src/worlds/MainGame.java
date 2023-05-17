@@ -102,14 +102,16 @@ public class MainGame extends World  {
         }
         else if(gameInfo.getState() == GameState.ROUND_ENDED)
         {
+            removeObjects(getObjects(AttackBar.class));
             if(gameInfo.getRecentWinner().getPlayerId() == localPlayerInfo.getPlayerId()) SoundEffectHandler.SimpleBattle_Win.play();
             else SoundEffectHandler.SimpleBattle_Lose.play();
         }
         else if(gameInfo.getState() == GameState.GAME_OVER)
         {
-            if(gameInfo.getRecentWinner().getPlayerId() == localPlayerInfo.getPlayerId()) createMessageOverlay("victoryText.png", 2000);
-            else createMessageOverlay("defeatText.png", 2000);
-            createMessageOverlay("gameOverText.png", 2000);
+            removeObjects(getObjects(AttackBar.class));
+            //createMessageOverlay("gameOverText.png", 2000);
+            if(gameInfo.getRecentWinner().getPlayerId() == localPlayerInfo.getPlayerId()) createMessageOverlay("victoryText.png", 999999999);
+            else createMessageOverlay("defeatText.png", 999999999);
         }
 
         updateUI();

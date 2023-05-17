@@ -17,6 +17,7 @@ public class AttackBar extends Actor {
     private int attackValue = 0;
     private int barSpeed;
     private Consumer<Integer> onClick;
+    private boolean active = true;
 
     public AttackBar(int barSpeed, Consumer<Integer> onClick)
     {
@@ -59,14 +60,9 @@ public class AttackBar extends Actor {
         if(Greenfoot.mouseClicked(null))
         {
             onClick.accept(attackValue/2);
-            try {
-                Thread.sleep(1000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-            getWorld().removeObject(this);
+            active = false;
         }
-        else
+        else if(active)
         {
             for(int i=0; i<barSpeed; i++)
             {
