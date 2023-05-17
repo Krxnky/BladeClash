@@ -65,6 +65,7 @@ public class MainGame extends World  {
 
     public void waitingForAttack(int attackBarSpeed)
     {
+        SoundEffectHandler.GameStarted.play();
         createMessageOverlay("attackText.png", 2000);
         movePlayersInto();
         System.out.println("WAITING FOR ATTACK STARTED SPEED: " + attackBarSpeed);
@@ -160,11 +161,13 @@ public class MainGame extends World  {
         addObject(enemyCharacter, 875, 350);
     }
     public void movePlayersBack(){
+        SoundEffectHandler.Explosion.play();
         playerCharacter.moveBack();
         enemyCharacter.moveBack();
 
     }
     public void movePlayersInto(){
+        SoundEffectHandler.Swoosh.play();
         playerCharacter.moveInto();
         enemyCharacter.moveInto();
     }

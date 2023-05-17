@@ -1,5 +1,6 @@
 package actors;
 
+import classes.SoundEffectHandler;
 import greenfoot.Actor;
 import greenfoot.GreenfootImage;
 
@@ -129,6 +130,7 @@ public class Vegeta extends Actor {
         else if(punchActive) {
             animate(punchFrames);
             nextPunchFrame();
+            SoundEffectHandler.Punch.play();
         }
         else if(victoryAnimation){
             buildVictoryFrames();
