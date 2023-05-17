@@ -94,7 +94,7 @@ public class NetworkHandler implements Runnable {
 
                         if (gameInfo.getState() == GameState.GAME_OVER){
                             mainGame.movePlayersBack();
-                            if(gameInfo.getMostRecentWinner().getPlayerId() == 1){
+                            if(gameInfo.getRecentWinner().getPlayerId() == mainGame.getLocalPlayerInfo().getPlayerId()){
                                 mainGame.getPlayerCharacter().animateVictory();
                                 mainGame.getEnemyCharacter().setIdle();
                             }

@@ -127,6 +127,10 @@ public class MainGame extends World  {
         }
     }
 
+    public PlayerInfo getLocalPlayerInfo() {
+        return localPlayerInfo;
+    }
+
     private void updateUI()
     {
 
