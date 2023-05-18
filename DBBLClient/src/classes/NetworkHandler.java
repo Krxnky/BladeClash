@@ -84,7 +84,15 @@ public class NetworkHandler implements Runnable {
                         game = gameInfo; // to get state
                         if(gameInfo.getState() == GameState.ROUND_ENDED) {
                             try {
-                                mainGame.movePlayersBack();
+                                if(gameInfo.getMostRecentWinner().getPlayerId() == 1 && gameInfo.getPlayers()[1].getHealth() < 1){
+                                    mainGame.getPlayerCharacter().moveBack();
+                                    mainGame.getEnemyCharacter().moveBackLoss();
+                                }
+                                else if (gameInfo.getMostRecentWinner().getPlayerId() == 2 && gameInfo.getPlayers()[0].getHealth() < 1){
+                                    mainGame.getPlayerCharacter().moveBackLoss();
+                                    mainGame.getEnemyCharacter().moveBack();
+                                }
+                                else{mainGame.movePlayersBack();}
                                 mainGame.pauseSequence();
                                 System.out.println("Pausing....");
                             } catch (Exception e){
@@ -93,14 +101,26 @@ public class NetworkHandler implements Runnable {
                         }
 
                         if (gameInfo.getState() == GameState.GAME_OVER){
-                            mainGame.movePlayersBack();
+
+                            if(gameInfo.getMostRecentWinner().getPlayerId() == 1){
+                                mainGame.getPlayerCharacter().moveBack();
+                                mainGame.getEnemyCharacter().moveBackLoss();
+                            }
+                            else {
+                                mainGame.getPlayerCharacter().moveBackLoss();
+                                mainGame.getEnemyCharacter().moveBack();
+                            }
                             if(gameInfo.getRecentWinner().getPlayerId() == mainGame.getLocalPlayerInfo().getPlayerId()){
                                 mainGame.getPlayerCharacter().animateVictory();
-                                mainGame.getEnemyCharacter().setIdle();
+                                mainGame.getPlayerCharacter().moveBack();
+                                mainGame.getEnemyCharacter().moveBackLoss();
+//                                mainGame.getEnemyCharacter().setIdle();
                             }
                             else{
                                 mainGame.getEnemyCharacter().animateVictory();
-                                mainGame.getPlayerCharacter().setIdle();
+                                mainGame.getPlayerCharacter().moveBackLoss();
+                                mainGame.getEnemyCharacter().moveBack();
+//                                mainGame.getPlayerCharacter().setIdle();
                             }
                         }
                         mainGame.setGameInfo(gameInfo);

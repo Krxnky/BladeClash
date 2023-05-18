@@ -11,6 +11,7 @@ public class Goku extends Actor {
     Queue<GreenfootImage> punchFrames = new LinkedList<GreenfootImage>();
     Queue<GreenfootImage> idleFrames = new LinkedList<GreenfootImage>();
     Queue<GreenfootImage> victoryFrames = new LinkedList<GreenfootImage>();
+    Queue<GreenfootImage> lossFrames = new LinkedList<GreenfootImage>();
     private static int counter = 0;
     private static boolean punchActive;
     private static boolean idle;
@@ -35,6 +36,10 @@ public class Goku extends Actor {
             //getImage().scale(temp.getWidth()*2, temp.getHeight()*2);
             idleFrames.add(new GreenfootImage(temp));
         }
+        for (int i = 1; i <= 8; i++){
+            GreenfootImage temp = new GreenfootImage("gokuloss" + i + ".png");
+            lossFrames.add(temp);
+        }
     }
 
     public void animate(Queue<GreenfootImage> frames){
@@ -57,6 +62,23 @@ public class Goku extends Actor {
         while (getX()>100){
             try {
                 Thread.sleep(100 / 30);
+                setLocation(getX() - 5, getY());
+//                System.out.println("vegeta moving ");
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
+    public void moveBackLoss(){
+        int x = 0;
+        punchActive = false;
+        idle = false;
+        victoryAnimation = false;
+        while (getX() >100){
+            try {
+                Thread.sleep(100 / 30);
+                if (lossFrames.size() > 1)setImage(lossFrames.poll());
+                System.out.println("X:" + x);
                 setLocation(getX() - 5, getY());
 //                System.out.println("vegeta moving ");
             } catch (Exception e) {

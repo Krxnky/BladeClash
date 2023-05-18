@@ -113,17 +113,13 @@ public class Server {
                 game.setState(GameState.ATTACK_PROCESS_STARTED);
                 attacks = readAttack();
                 PlayerInfo winner = attacks[0].getAttackValue() > attacks[1].getAttackValue() ? goku: attacks[0].getAttackValue() < attacks[1].getAttackValue() ? vegeta: null;
-                if(winner != null)
-                {
-                    game.setMostRecentWinner(winner);
-                    if (winner.equals(goku)) {
-                        vegeta.setHealth(vegeta.getHealth() - attacks[0].getAttackValue());
-                    }
-                    else if (winner.equals(vegeta)) {
-                        goku.setHealth(goku.getHealth() - attacks[1].getAttackValue());
-                    }
+                game.setMostRecentWinner(winner);
+                if (winner.equals(goku)) {
+                    vegeta.setHealth(vegeta.getHealth() - attacks[0].getAttackValue());
                 }
-
+                else if (winner.equals(vegeta)) {
+                    goku.setHealth(goku.getHealth() - attacks[1].getAttackValue());
+                }
                 game.setState(GameState.ATTACK_FINISHED);
                 game.updatePlayerInfo(new PlayerInfo[]{goku, vegeta});
                 System.out.println(game.getPlayers()[0].getHealth());
