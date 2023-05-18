@@ -103,8 +103,12 @@ public class MainGame extends World  {
         else if(gameInfo.getState() == GameState.ROUND_ENDED)
         {
             removeObjects(getObjects(AttackBar.class));
-            if(gameInfo.getRecentWinner().getPlayerId() == localPlayerInfo.getPlayerId()) SoundEffectHandler.SimpleBattle_Win.play();
-            else SoundEffectHandler.SimpleBattle_Lose.play();
+            if(gameInfo.getRecentWinner() != null)
+            {
+                if(gameInfo.getRecentWinner().getPlayerId() == localPlayerInfo.getPlayerId()) SoundEffectHandler.SimpleBattle_Win.play();
+                else SoundEffectHandler.SimpleBattle_Lose.play();
+            }
+
         }
         else if(gameInfo.getState() == GameState.GAME_OVER)
         {

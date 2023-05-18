@@ -57,7 +57,7 @@ public class AttackBar extends Actor {
 
     public void act()
     {
-        if(Greenfoot.mouseClicked(null))
+        if(Greenfoot.mouseClicked(null) && active)
         {
             onClick.accept(attackValue/2);
             active = false;
