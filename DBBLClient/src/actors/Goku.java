@@ -38,6 +38,7 @@ public class Goku extends Actor {
         }
         for (int i = 1; i <= 8; i++){
             GreenfootImage temp = new GreenfootImage("gokuloss" + i + ".png");
+            temp.mirrorHorizontally();
             lossFrames.add(temp);
         }
     }
@@ -76,15 +77,35 @@ public class Goku extends Actor {
         victoryAnimation = false;
         while (getX() >100){
             try {
-                Thread.sleep(100 / 30);
-                if (lossFrames.size() > 1)setImage(lossFrames.poll());
-                System.out.println("X:" + x);
+                x++;
+                Thread.sleep(100/5);
+                if (lossFrames.size() > 0)setImage(lossFrames.poll());
+                System.out.println("goku X:" + x);
                 setLocation(getX() - 5, getY());
 //                System.out.println("vegeta moving ");
             } catch (Exception e) {
                 e.printStackTrace();
             }
         }
+    }
+    public void moveBackRoundLoss(){
+        int x = 0;
+        punchActive = false;
+        idle = false;
+        victoryAnimation = false;
+        while (getX() >100){
+            try {
+                x++;
+                Thread.sleep(100/10);
+                if (lossFrames.size() > 5)setImage(lossFrames.poll());
+                System.out.println("goku X:" + x);
+                setLocation(getX() - 5, getY());
+//                System.out.println("vegeta moving ");
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        lossFrames.clear();
     }
     public void animatePunch(){
         idle = false;
@@ -101,6 +122,14 @@ public class Goku extends Actor {
                 temp.mirrorHorizontally();
                 victoryFrames.add(temp);
             }
+        }
+    }
+    public void reloadLostFrames(){
+        lossFrames.clear();
+        for (int i = 1; i <= 8; i++){
+            GreenfootImage temp = new GreenfootImage("gokuloss" + i + ".png");
+            temp.mirrorHorizontally();
+            lossFrames.add(temp);
         }
     }
     public void animateVictory(){
@@ -128,7 +157,7 @@ public class Goku extends Actor {
             punchFrames.add(punchFrames.poll());
             System.out.println("Punchframe updated");
         }
-
+        if(counter % 10 == 0)SoundEffectHandler.randomSound("gokuattack").play();
     }
     public void nextIdleFrame(){
         if(counter % 15 == 0){

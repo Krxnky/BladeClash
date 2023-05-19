@@ -39,7 +39,7 @@ public class MainGame extends World  {
         super(1000, 600, 1, false);
 
         this.serverIp = serverIp;
-
+        SoundEffectHandler.SoundEffectHandlerInitiator();
         GreenfootImage bg = new GreenfootImage("MV5BMWM3MmY2YWEtNjVmZi00NmZlLTliN2EtYTc0YzhhOTQ3MzE2XkEyXkFqcGdeQXVyNzgxMzc3OTc@._V1_.png");
         bg.scale(1000, 600);
         setBackground(bg);
@@ -95,8 +95,10 @@ public class MainGame extends World  {
 
         System.out.println(gameInfo.getState());
         if(gameInfo.getState() == GameState.STARTING)
-        {
+        {SoundEffectHandler.randomSound("vegetaready").play();
+            SoundEffectHandler.randomSound("gokuready").play();
             createMessageOverlay("gameStartingText.png", 2000);
+
             startGame();
             SoundEffectHandler.GameStarted.play();
         }
@@ -172,8 +174,19 @@ public class MainGame extends World  {
     }
     public void movePlayersBack(){
         SoundEffectHandler.Explosion.play();
-        playerCharacter.moveBack();
-        enemyCharacter.moveBack();
+        if (gameInfo.getMostRecentWinner().getPlayerId() == getLocalPlayerInfo().getPlayerId()) {
+            enemyCharacter.moveBackRoundLoss();
+            playerCharacter.moveBack();
+            SoundEffectHandler.randomSound("vegetaroundloss").play();
+        }
+        else{
+            playerCharacter.moveBackRoundLoss();
+            enemyCharacter.moveBack();
+            SoundEffectHandler.randomSound("gokuroundloss").play();
+        }
+
+//        playerCharacter.moveBack();
+//        enemyCharacter.moveBack();
 
     }
     public void movePlayersInto(){

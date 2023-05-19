@@ -36,7 +36,7 @@ public class NetworkHandler implements Runnable {
         try {
             socket = new Socket(serverIp, serverPort);
             System.out.println("Connected to server...");
-
+            SoundEffectHandler.gokuIntro.play();
             objectOutputStream = new ObjectOutputStream(socket.getOutputStream());
             objectInputStream = new ObjectInputStream(socket.getInputStream());
 
@@ -93,6 +93,8 @@ public class NetworkHandler implements Runnable {
                                     mainGame.getEnemyCharacter().moveBack();
                                 }
                                 else{mainGame.movePlayersBack();}
+                                mainGame.getEnemyCharacter().reloadLostFrames();
+                                mainGame.getPlayerCharacter().reloadLostFrames();
                                 mainGame.pauseSequence();
                                 System.out.println("Pausing....");
                             } catch (Exception e){
@@ -102,24 +104,30 @@ public class NetworkHandler implements Runnable {
 
                         if (gameInfo.getState() == GameState.GAME_OVER){
 
-                            if(gameInfo.getMostRecentWinner().getPlayerId() == 1){
+                            if(gameInfo.getRecentWinner().getPlayerId() == mainGame.getLocalPlayerInfo().getPlayerId()){
+                                System.out.println("Block 1: You Win\n\n\n");
                                 mainGame.getPlayerCharacter().moveBack();
                                 mainGame.getEnemyCharacter().moveBackLoss();
                             }
                             else {
-                                mainGame.getPlayerCharacter().moveBackLoss();
+                                System.out.println("Block 2: you lost\n\n\n");
                                 mainGame.getEnemyCharacter().moveBack();
+                                mainGame.getPlayerCharacter().moveBackLoss();
                             }
                             if(gameInfo.getRecentWinner().getPlayerId() == mainGame.getLocalPlayerInfo().getPlayerId()){
+                                System.out.println("Block 3: you won\n\n\n");
+                                SoundEffectHandler.randomSound("gokuvictory").play();
                                 mainGame.getPlayerCharacter().animateVictory();
-                                mainGame.getPlayerCharacter().moveBack();
-                                mainGame.getEnemyCharacter().moveBackLoss();
+//                                mainGame.getPlayerCharacter().moveBack();
+//                                mainGame.getEnemyCharacter().moveBackLoss();
 //                                mainGame.getEnemyCharacter().setIdle();
                             }
                             else{
+                                System.out.println("Block 4: you lost\n\n\n");
+                                SoundEffectHandler.randomSound("vegetavictory").play();
                                 mainGame.getEnemyCharacter().animateVictory();
-                                mainGame.getPlayerCharacter().moveBackLoss();
-                                mainGame.getEnemyCharacter().moveBack();
+//                                mainGame.getPlayerCharacter().moveBackLoss();
+//                                mainGame.getEnemyCharacter().moveBack();
 //                                mainGame.getPlayerCharacter().setIdle();
                             }
                         }

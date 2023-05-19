@@ -35,6 +35,7 @@ public class Vegeta extends Actor {
             GreenfootImage temp = new GreenfootImage("vegetaloss" + i + ".png");
             lossFrames.add(temp);
         }
+        System.out.println(lossFrames.size());
     }
     public void animate(Queue<GreenfootImage> frames){
         setImage(frames.peek());
@@ -72,15 +73,36 @@ public class Vegeta extends Actor {
         while (getX() < 875){
             System.out.println("move back loss");
             try {
-                Thread.sleep(100 / 30);
-                if (lossFrames.size() > 1)setImage(lossFrames.poll());
-                System.out.println("X:" + x);
+                x++;
+                Thread.sleep(100/5);
+                if (lossFrames.size() > 0)setImage(lossFrames.poll());
+                System.out.println("Vegeta X:" + x);
                 setLocation(getX() + 5, getY());
 //                System.out.println("vegeta moving ");
             } catch (Exception e) {
                 e.printStackTrace();
             }
         }
+    }
+    public void moveBackRoundLoss(){
+        int x = 0;
+        punchActive = false;
+        idle = false;
+        victoryAnimation = false;
+        while (getX() < 875){
+            System.out.println("move back loss");
+            try {
+                x++;
+                Thread.sleep(100/10);
+                if (lossFrames.size() > 5)setImage(lossFrames.poll());
+                System.out.println("Vegeta X:" + x);
+                setLocation(getX() + 5, getY());
+//                System.out.println("vegeta moving ");
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        lossFrames.clear();
     }
     public void animatePunch(){
         idle = false;
@@ -99,7 +121,14 @@ public class Vegeta extends Actor {
             }
         }
     }
-
+    public void reloadLostFrames(){
+        lossFrames.clear();
+        for (int i = 1; i <= 9; i++){
+            GreenfootImage temp = new GreenfootImage("vegetaloss" + i + ".png");
+            lossFrames.add(temp);
+        }
+        System.out.println(lossFrames.size());
+    }
     public void animateVictory(){
         idle = false;
         punchActive = false;
@@ -125,7 +154,7 @@ public class Vegeta extends Actor {
             punchFrames.add(punchFrames.poll());
             System.out.println("Punchframe updated");
         }
-
+        if(counter % 15 == 0)SoundEffectHandler.randomSound("vegetaattack").play();
     }
     public void nextIdleFrame(){
         if(counter % 15 == 0){
